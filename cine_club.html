@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Ciné Club</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body class="cine_club theme-rouge">
+    <a href="index.html" class="btn-back">retour <span lang="en">back</span></a>
+    <header class="site-header">
+        <span class="header-left">bonne</span>
+        <span class="header-right">figure</span>
+    </header>
+<nav>
+    <a href="a_propos_about.html" class="btn-about">à propos<span lang="en"> about</span></a>
+    <a href="a_propos_about.html" class="btn-about-fr">à propos</a>
+    <a href="a_propos_about.html" class="btn-about-en"><span lang="en">about</span></a>
+
+    <a href="index.html" 
+       onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); return false; }" 
+       class="btn-back">retour <span lang="en">back</span></a>
+       
+    <a href="index.html" 
+       onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); return false; }" 
+       class="btn-back-fr">retour</a>
+       
+    <a href="index.html" 
+       onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); return false; }" 
+       class="btn-back-en"><span lang="en">back</span></a>
+</nav>
+    <main class="split">
+        <section class="column left">
+            <p>Ciné Club</p>
+            <p>
+                L'identité visuelle du Ciné Club s'inspire des chrono-photographies d'Eadweard Muybridge, dont nous reprenons le découpage des mouvements. Ce principe séquentiel se prolonge dans des versions animées des visuels.
+                <span lang="en">
+                    The Film Club's visual identity is inspired by Eadweard Muybridge's chronophotographs, from which we adopt the segmentation of movement. This sequential principle is extended through animated versions of the visuals.
+                </span>
+            </p>
+            <p>
+                Nancy<br>
+                2024<br>
+                affiches <span lang="en">posters</span> 70 × 100 cm<br>
+                vidéos <span lang="en">videos</span> 1350 × 1080 px 20 s, 1080 × 1920 px 12 s<br>
+                visuels médias sociaux <span lang="en">social media visuals</span>
+            </p>
+        </section>
+        <section class="column right">
+            <img src="images/cine-club/cine-club.png" alt="Ciné club" class="two-thirds">
+            <video class="two-thirds" autoplay loop muted playsinline>
+                <source src="videos/cine-club-video1.mp4" type="video/mp4">
+            </video>
+            <video class="two-thirds" autoplay loop muted playsinline>
+                <source src="videos/cine-club-video2.mp4" type="video/mp4">
+            </video>
+            <img src="images/cine-club/hauts-de-hurlevent.jpg" alt="Ciné club" class="two-thirds">
+            <img src="images/cine-club/frankenstein.jpg" alt="Ciné club" class="two-thirds">
+            <img src="images/cine-club/au-coeur-des volcans.jpg" alt="Ciné club" class="two-thirds">
+        </section>
+    </main>
+</body>
+</html>

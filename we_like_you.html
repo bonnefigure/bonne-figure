@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>We like you, come visit !</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet">
+</head>
+<body class="we_like_you theme-black">
+    <a href="index.html" class="btn-back">retour <span lang="en">back</span></a>
+    <header class="site-header">
+        <span class="header-left">bonne</span>
+        <span class="header-right">figure</span>
+    </header>
+<nav>
+    <a href="a_propos_about.html" class="btn-about">à propos<span lang="en"> about</span></a>
+    <a href="a_propos_about.html" class="btn-about-fr">à propos</a>
+    <a href="a_propos_about.html" class="btn-about-en"><span lang="en">about</span></a>
+
+    <a href="index.html" 
+       onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); return false; }" 
+       class="btn-back">retour <span lang="en">back</span></a>
+       
+    <a href="index.html" 
+       onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); return false; }" 
+       class="btn-back-fr">retour</a>
+       
+    <a href="index.html" 
+       onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); return false; }" 
+       class="btn-back-en"><span lang="en">back</span></a>
+</nav>
+    <main class="split">
+        <section class="column left">
+            <p>We like you, come visit !</p>
+            <p>
+                Pour présenter l’option communication de l’ENSAD Nancy, j’ai été invité par Catherine Guiral à concevoir une affiche destinée à être envoyée à d’autres écoles d’art. Celle-ci reprend les cadre des autochromes de Julien Gérardin, conservés dans les archives de l’ENSAD Nancy, ici appliqués à des photographies actuelles de l’école. Au recto de l’affiche apparaissent des dessins, comme des signes ponctuant le texte de présentation.
+                <span lang="en">
+                To present the communication option at ENSAD Nancy, I was invited by Catherine Guiral to design a poster to be sent to other art schools. It uses the frames of Julien Gérardin's autochromes, preserved in the archives of ENSAD Nancy, applied here to current photographs of the school. The front of the poster features drawings, like symbols punctuating the presentation text.
+                </span>
+                </p>
+            <p>
+                Nancy<br>
+                2024<br>
+                affiche <span lang="en">poster</span> 40 × 60 cm <br>
+                Photographies de <span lang="en">photographs by</span> Dinah Datti 
+            </p>
+        </section>
+        <section class="column right">
+            <img src="images/we-like-you/we-like-you1.jpeg" alt="We like you, come visit ! Affiche" class="two-thirds">
+            <img src="images/we-like-you/we-like-you2.jpeg" alt="We like you, come visit ! Affiche" class="two-thirds">
+        </section>
+    </main>
+</body>
+</html>

@@ -1,0 +1,776 @@
+/* ======================================================
+   RESET / BASE
+====================================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Sorts Mill Goudy", serif;
+    font-size: 1.3em;
+    line-height: 1.3em;
+    color: var(--text-color, black);
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer et Edge */
+}
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+/* ======================================================
+   LAYOUT GÉNÉRAL
+====================================================== */
+.split {
+    display: flex;
+    height: 100vh; /* plein écran */
+}
+.column {
+    width: 50%;
+    overflow-y: auto;
+    padding: 30px;
+    padding-top: 80px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* Internet Explorer et Edge */
+}
+.column::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+}
+.column.left {
+    padding: 30px;
+    padding-bottom: 0px;
+    padding-top: 55px;
+}
+.left {
+    background: white;
+}
+.right {
+    background: var(--column-color);
+    padding-bottom: 0px;
+}
+/* ======================================================
+   TYPOGRAPHIE & CONTENU
+====================================================== */
+.column [lang="en"] {
+    color: var(--text-en-color, #45d7b3);
+}
+.column img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+}
+.column video {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+}
+.video-wrapper {
+    width: 100%;
+    margin-bottom: 30px; /* Aligné sur tes marges d'images */
+}
+
+.video-wrapper iframe {
+    width: 100%;
+    /* Utilise l'aspect-ratio moderne pour garder le format 16/9 */
+    aspect-ratio: 16 / 9; 
+    height: auto;
+    display: block;
+    border: none;
+}
+.two-thirds {
+    width: 66.666%;
+    display: block;
+    margin-top: 0px ;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+p {
+    hyphens: none;
+}
+
+.small-caps {
+    font-variant: small-caps;
+}
+
+.align-right {
+text-align: right
+}
+
+/* Desktop : cacher contact mobile, montrer contact desktop */
+.contact-mobile {
+    display: none;
+}
+
+/* ======================================================
+   MASONRY GRID (INDEX)
+====================================================== */
+/* Cache la grille par défaut sur l'index */
+.index .masonry-grid {
+    opacity: 0;
+}
+
+.masonry-grid {
+    width: 100%;
+}
+
+.masonry-item {
+    width: 33.333%;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.masonry-item:nth-child(3n+1) {
+    padding-left: 0;  /* Supprime le padding gauche de la 1ère colonne */
+}
+
+.masonry-item:nth-child(3n) {
+    padding-right: 0;  /* Supprime le padding droit de la 3ème colonne */
+}
+
+.masonry-item a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.masonry-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 7.5px;
+}
+
+.masonry-item .project-title {
+    display: block;
+    font-size: 1.3 em;
+}
+
+.masonry-item a:hover .project-title {
+    text-decoration: underline;
+}
+/* ======================================================
+   HEADERS FIXES
+====================================================== */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    z-index: 1000;
+    pointer-events: none; /* permet de cliquer à travers */
+}
+.header-left,
+.header-right {
+    font-size: inherit;
+    width: 50%;
+    padding: 30px 30px 0 30px;
+    background: transparent;
+    pointer-events: auto;
+}
+.header-left {
+    text-align: right;
+}
+.header-right {
+    text-align: left;
+    color: var(--header-right-color, black);
+}
+
+/* On s'assure que les colonnes permettent le placement absolu des images */
+.index-rebus .header-left, 
+.index-rebus .header-right {
+    position: relative;
+    padding-top: 30px; /* Ton alignement fixe pour le texte */
+}
+
+/* Style de base commun (sans la taille) */
+.rebus-img {
+    position: absolute;
+    width: auto; /* Garde les proportions */
+    pointer-events: none;
+}
+
+/* Réglage indépendant pour l'image de GAUCHE ("onne") */
+.onne {
+    height: 20px;  /* Ajuste cette valeur selon ton image */
+    top: 32px;     /* Position verticale */
+    right: 30px;   /* Position horizontale */
+}
+
+/* Réglage indépendant pour l'image de DROITE ("fig") */
+.fig {
+    height: 24px; /* Ajuste cette valeur selon ton image */
+    top: 27px;    /* Tu peux même mettre des valeurs négatives si l'image dépasse */
+    left: 20px;    /* Position horizontale */
+}
+
+/* On décale le texte pour qu'il ne soit pas masqué par l'image */
+.index-rebus .letter-b {
+    margin-right: 61px; /* Décale le B vers la gauche pour laisser la place à l'image */
+    display: inline-block;
+}
+
+.index-rebus .letter-ure {
+    margin-left: 10px;  /* Décale le URE vers la droite pour laisser la place à l'image */
+    display: inline-block;
+}
+
+/* ======================================================
+   BOUTONS FIXES (UI)
+====================================================== */
+.btn-about {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    text-decoration: none;
+    color: var(--about-color, black);      /* "à propos" */
+    z-index: 1001;
+    pointer-events: auto;
+}
+.btn-about [lang="en"] {
+    color: var(--about-en-color, #A03C5A); /* "about" */
+}
+.btn-back {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    text-decoration: none;
+    color: var(--back-color, black);       /* "retour" */
+    z-index: 1001;
+    pointer-events: auto;
+}
+.btn-back [lang="en"] {
+    color: var(--back-en-color, #A03C5A);  /* "back" */
+}
+
+/* Nouveaux boutons séparés (cachés par défaut sur desktop) */
+.btn-about-fr,
+.btn-about-en,
+.btn-back-fr,
+.btn-back-en {
+    display: none;
+}
+
+/* Nouveaux boutons séparés (cachés par défaut sur desktop) */
+.btn-about-fr,
+.btn-about-en {
+    display: none;
+}
+
+/* Hover sur boutons desktop */
+.btn-about:hover,
+.btn-back:hover {
+    text-decoration: underline;
+}
+
+/* Hover sur bouton about */
+.btn-about:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--about-color, black);
+}
+
+.btn-about [lang="en"] {
+    color: var(--about-en-color, #A03C5A);
+}
+
+/* Souligner aussi le span [lang="en"] au hover */
+.btn-about:hover [lang="en"] {
+    text-decoration: underline;
+    text-decoration-color: var(--about-en-color, #A03C5A);
+}
+
+.btn-back:hover {
+    text-decoration-color: currentColor;
+}
+
+.btn-about:hover [lang="en"] {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+}
+
+.btn-back:hover [lang="en"] {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+}
+
+.btn-download {
+    text-decoration: underline; /* Souligné par défaut */
+    color: var(--text-color); /* Utilise la couleur du thème actuel */
+    cursor: pointer;
+}
+
+/* ======================================================
+   FOOTER FIXE
+====================================================== */
+.site-footer {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+    background: transparent;
+    pointer-events: auto;
+    text-align: right;
+}
+
+.site-footer p {
+    margin: 0;
+}
+.site-footer [lang="en"] {
+    color: var(--text-en-color, #7D6E55);
+}
+
+/* ======================================================
+   VARIABLES PAR PAGE / PROJET
+====================================================== */
+/* Index */
+body.index {
+    --text-en-color: #45d7b3;
+    --about-color: black;
+    --about-en-color: #A03C5A;
+    --header-right-color: black;
+    --back-color: black;
+    --back-en-color: #45d7b3;
+}
+body.index .column.left {
+    padding-top: 80px;
+}
+/* À propos */
+body.a_propos_about {
+    --column-color: #F2F200;
+    --text-en-color: #787369;
+    --about-color: black;
+    --about-en-color: #787369;
+    --header-right-color: black;
+    --back-color: black;
+    --back-en-color: #787369;
+}
+body.a_propos_about .column.right {
+    padding-top: 55px;
+}
+/* Thème black */
+body.theme-black {
+    --column-color: black;
+    --text-color: black;   /* desktop */
+    --text-en-color: #45d7b3;
+    --about-color: white;
+    --about-en-color: #45d7b3;
+    --header-right-color: white;
+    --back-color: black;
+    --back-en-color: #45d7b3;
+}
+
+/* Thème rouge */
+body.theme-rouge {
+    --column-color: #A03C5A;
+    --text-en-color: #45d7b3;
+    --about-color: black;
+    --about-en-color: #45d7b3;
+    --header-right-color: black;
+    --back-color: black;
+    --back-en-color: #45d7b3;
+}
+/* Thème brun */
+body.theme-brun {
+    --column-color: #787369;
+    --text-en-color: #45d7b3;
+    --about-color: black;
+    --about-en-color: #45d7b3;
+    --header-right-color: black;
+    --back-color: black;
+    --back-en-color: #45d7b3;
+}
+/* Thème turquoise */
+body.theme-turquoise {
+    --column-color: #45d7b3;
+    --text-en-color: #A03C5A;
+    --about-color: black;
+    --about-en-color: #A03C5A;
+    --header-right-color: black;
+    --back-color: black;
+    --back-en-color: #A03C5A;
+}
+
+/* Thème jaune */
+body.theme-jaune {
+    --column-color: #F2F200;
+    --text-en-color: #787369;
+    --about-color: black;
+    --about-en-color: #787369;
+    --header-right-color: black;
+    --back-color: black;
+    --back-en-color: #787369;
+}
+
+/* ======================================================
+   MOBILE / RESPONSIVE
+====================================================== */
+
+@media (max-width: 768px) {
+    
+    /* ------------------------------------------------
+       LAYOUT GÉNÉRAL MOBILE
+    ------------------------------------------------ */
+    body {
+        overflow: auto;
+        font-size: 1.3em;
+    }
+    
+    .split {
+        flex-direction: column;
+        height: auto;
+    }
+    
+    .column {
+        width: 100%;
+        padding: 10px;
+        overflow-y: visible;
+    }
+    
+    p {
+        hyphens: none !important;
+    }
+
+    body {
+    background-color: var(--column-color, white); 
+    
+    min-height: 100vh;
+
+    min-height: 100dvh; 
+    }
+
+    body.index {
+    background-color: white; 
+    }
+    
+    /* ------------------------------------------------
+       HEADERS MOBILE
+    ------------------------------------------------ */
+    .site-header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding-top: 0px;
+        /* display: flex est déjà hérité du desktop */
+    }
+    
+    .header-left,
+    .header-right {
+        width: auto;
+        padding: 0px 10px;
+        position: relative; /* Indispensable pour placer les images du rébus */
+        pointer-events: auto;
+    }
+
+    body:not(.index) .header-left,
+    body:not(.index) .header-right {
+    padding-top: 10px;
+    }
+
+    .header-left {
+        text-align: left;
+    }
+    
+    .header-right {
+        text-align: right;
+    }
+
+    /* ------------------------------------------------
+       AJUSTEMENTS RÉBUS (INDEX UNIQUEMENT)
+    ------------------------------------------------ */
+    /* On réduit ou supprime les marges desktop qui seraient trop grandes ici */
+    .index-rebus .header-left,
+    .index-rebus .header-right {
+        padding-top: 10px; /* Mets 0 pour coller au plafond, ou 10px si tu veux un petit espace */
+    }
+
+    .index-rebus .letter-b,
+    .index-rebus .letter-ure {
+        display: inline-block;
+        margin-top: 0px; /* Plus besoin de valeur négative bricolée ! */
+    }
+
+    .index-rebus .letter-b {
+        margin-right: 35px; /* Espace pour l'image "onne" */
+        display: inline-block;
+    }
+
+    .index-rebus .letter-ure {
+        margin-left: 55px; /* Espace pour l'image "fig" */
+        display: inline-block;
+    }
+
+    /* Taille et position des images sur mobile */
+    .onne {
+        height: 22px;    /* Taille réduite pour petit écran */
+        top:10px;        /* Aligné verticalement au b */
+        right: -24px;      /* Placé dans la marge créée ci-dessus */
+    }
+
+    .fig {
+        height: 26px;    /* Taille réduite pour petit écran */
+        top: 8px;      /* Ajusté pour ne pas chevaucher le texte */
+        left: 43px;       /* Placé dans la marge créée ci-dessus */
+    }
+    
+    /* ------------------------------------------------
+       NAVIGATION BAS
+    ------------------------------------------------ */
+    .bottom-nav {
+        position: static;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+    
+    .bottom-nav-left,
+    .bottom-nav-right {
+        width: 100%;
+        text-align: center;
+        padding: 5px;
+    }
+    
+    /* ------------------------------------------------
+       FOOTER
+    ------------------------------------------------ */
+    .site-footer {
+        position: static;
+        text-align: right;
+        background: var(--column-color) !important;
+        padding-right: 10px;
+        padding-bottom: 45px;
+    }
+    
+    /* ------------------------------------------------
+       BOUTONS - INDEX
+    ------------------------------------------------ */
+    /* Cacher le bouton about original */
+    .btn-about {
+        display: none !important;
+    }
+    
+    /* Boutons about séparés - index */
+    /* Boutons about séparés - index */
+    .btn-about-fr,
+    .btn-about-en {
+    display: block !important;
+    position: fixed;
+    bottom: 10px;
+    top: auto;
+    transform: none;
+    z-index: 1001;
+    pointer-events: auto;
+    text-decoration: none;
+    font-size: 1em;
+    }
+
+    .btn-about-fr {
+    left: 10px;
+    color: black;
+    }
+
+    .btn-about-en {
+    right: 10px;
+    color: #A03C5A;
+    }
+
+    /* Forcer la couleur du span [lang="en"] */
+    .btn-about-en [lang="en"] {
+    color: inherit;
+    }
+
+    /* Hover sur boutons mobile - index */
+    body.index .btn-about-fr:hover {
+    text-decoration: underline;
+    text-decoration-color: black;
+    }
+
+    body.index .btn-about-en:hover {
+    text-decoration: underline;
+    text-decoration-color: #A03C5A;
+    }
+    
+    /* Cacher bouton back sur index */
+    .btn-back {
+        display: none;
+    }
+
+    body.index .btn-back {
+        display: none !important;
+    }
+    
+    /* ------------------------------------------------
+       BOUTONS - PAGES PROJET
+    ------------------------------------------------ */
+    /* Cacher les boutons about sur pages projet */
+    body:not(.index) .btn-about-fr,
+    body:not(.index) .btn-about-en {
+        display: none !important;
+    }
+    
+    /* Cacher le bouton back original */
+    body:not(.index) .btn-back {
+        display: none !important;
+    }
+    
+    /* Style commun pour les deux boutons back */
+    body:not(.index) .btn-back-fr,
+    body:not(.index) .btn-back-en {
+    display: block !important;
+    position: fixed;
+    bottom: 10px;
+    top: auto;
+    transform: none;
+    z-index: 1001;
+    pointer-events: auto;
+    text-decoration: none;
+    font-size: 1em;
+    }
+
+    /* Bouton Français : on garde la variable sur le lien */
+    body:not(.index) .btn-back-fr {
+    left: 10px;
+    color: var(--back-color, black);
+    }
+
+    /* Bouton Anglais : on déplace la couleur ICI (sur le lien) */
+    body:not(.index) .btn-back-en {
+    right: 10px;
+    color: var(--back-en-color, #A03C5A); 
+    }
+
+    /* On force le texte à hériter de la couleur du lien parent */
+    body:not(.index) .btn-back-en [lang="en"] {
+    color: inherit;
+    }
+
+    /* On s'assure que le survol utilise la couleur du texte pour le trait */
+    body:not(.index) .btn-back-fr:hover,
+    body:not(.index) .btn-back-en:hover {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    }
+    
+    /* ------------------------------------------------
+       INDEX MOBILE
+    ------------------------------------------------ */
+    body.index .column.left {
+        display: block !important;
+        padding: 10px;
+        padding-top: 45px;
+        padding-bottom: 10px;
+    }
+    
+    body.index .column.right {
+        display: none !important;
+    }
+    
+    /* Grille masonry */
+    .masonry-grid {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .masonry-item {
+        width: 100% !important;
+        padding: 0 !important;
+        margin-bottom: 30px;  /* ← MARGE SOUS CHAQUE ITEM */
+    }
+    
+    .masonry-item img {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    .masonry-item .project-title {
+        font-size: 1em;
+    }
+    
+    /* ------------------------------------------------
+       PAGES PROJET MOBILE
+    ------------------------------------------------ */
+    body:not(.index) .column.left {
+        display: block !important;
+        background: var(--column-color) !important;
+        padding: 0px;
+        padding-top: 0px;
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 20px;
+        order: 2;
+    }
+    
+    body:not(.index) .column.right {
+        display: block !important;
+        width: 100%;
+        background: var(--column-color) !important;
+        padding: 10px;
+        padding-top: 45px;
+        padding-bottom: 0px;
+        order: 1;
+    }
+    
+    body:not(.index) .split {
+        display: flex;
+        flex-direction: column;
+        background: var(--column-color) !important;
+    }
+
+    body:not(.index) .column img,
+    body:not(.index) .column video {
+    margin-bottom: 10px;
+    }
+
+    .video-wrapper{
+    margin-bottom: 10px;
+    }
+    
+    /* Images pleine largeur */
+    .two-thirds {
+        width: 100%;
+    }
+    
+    /* ------------------------------------------------
+       PAGES SPÉCIFIQUES
+    ------------------------------------------------ */
+    /* À propos */
+    body.a_propos_about .column.right {
+        padding-top: 25px !important;
+        padding-bottom: 0px !important;
+    }
+    
+    /* Thème black - couleurs spécifiques */
+    body.theme-black {
+        --text-color: white;
+        --back-color: white;
+    }
+    
+    /* Hover sur boutons mobile - pages projet */
+    body:not(.index) .btn-back-fr:hover,
+    body:not(.index) .btn-back-en:hover {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    }
+
+    /* Span anglais du back */
+    body:not(.index) .btn-back-en:hover [lang="en"] {
+    text-decoration-color: currentColor;
+    }
+
+        .contact-mobile {
+        display: block;
+    }
+
+    /* À propos : cacher la colonne gauche sur mobile */
+body.a_propos_about .column.left {
+    display: none !important;
+}
+
+
+} /* FIN @media */

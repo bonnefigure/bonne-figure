@@ -1,0 +1,37 @@
+
+    <nav class="bottom-nav">
+    <a href="blog.html" class="bottom-nav-left">pâle</a>
+    <a href="blog.html" class="bottom-nav-right">figure</a>
+    </nav>
+
+    /* ======================================================
+   NAVIGATION BAS (BLOG)
+====================================================== */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.bottom-nav-left,
+.bottom-nav-right {
+    width: 50%;
+    padding: 0 30px 30px 30px;
+    background: transparent;
+    pointer-events: auto;
+    text-decoration: none;
+    color: black;
+}
+
+.bottom-nav-left {
+    text-align: right;
+}
+
+.bottom-nav-right {
+    text-align: left;
+    color: var(--header-right-color, black);
+}
