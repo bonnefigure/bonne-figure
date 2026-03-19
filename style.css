@@ -408,6 +408,17 @@ body.theme-jaune {
     --back-en-color: #787369;
 }
 
+body.a_propos_about .column.right {
+    padding-top: 55px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+body.a_propos_about .align-right {
+    margin-top: auto;
+}
+
 /* ======================================================
    MOBILE / RESPONSIVE
 ====================================================== */
@@ -447,6 +458,10 @@ body.theme-jaune {
 
     body.index {
     background-color: white; 
+    }
+
+    body.a_propos_about .align-right {
+    position: static;
     }
     
     /* ------------------------------------------------
@@ -742,7 +757,7 @@ body.theme-jaune {
     /* À propos */
     body.a_propos_about .column.right {
         padding-top: 25px !important;
-        padding-bottom: 0px !important;
+        padding-bottom: 15px !important;
     }
     
     /* Thème black - couleurs spécifiques */
@@ -770,6 +785,16 @@ body.theme-jaune {
     /* À propos : cacher la colonne gauche sur mobile */
 body.a_propos_about .column.left {
     display: none !important;
+}
+
+body.a_propos_about .column.right {
+    padding-top: 25px !important;
+    display: block !important;
+    min-height: auto !important;
+}
+
+body.a_propos_about .align-right {
+    margin-top: 0;
 }
 
 
