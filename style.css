@@ -199,26 +199,26 @@ text-align: right
 
 /* Réglage indépendant pour l'image de GAUCHE ("onne") */
 .onne {
-    height: 20px;  /* Ajuste cette valeur selon ton image */
-    top: 32px;     /* Position verticale */
+    height: 17px;  /* Ajuste cette valeur selon ton image */
+    top: 33px;     /* Position verticale */
     right: 30px;   /* Position horizontale */
 }
 
 /* Réglage indépendant pour l'image de DROITE ("fig") */
 .fig {
-    height: 24px; /* Ajuste cette valeur selon ton image */
-    top: 27px;    /* Tu peux même mettre des valeurs négatives si l'image dépasse */
+    height: 22px; /* Ajuste cette valeur selon ton image */
+    top: 29px;    /* Tu peux même mettre des valeurs négatives si l'image dépasse */
     left: 20px;    /* Position horizontale */
 }
 
 /* On décale le texte pour qu'il ne soit pas masqué par l'image */
 .index-rebus .letter-b {
-    margin-right: 61px; /* Décale le B vers la gauche pour laisser la place à l'image */
+    margin-right: 52px; /* Décale le B vers la gauche pour laisser la place à l'image */
     display: inline-block;
 }
 
 .index-rebus .letter-ure {
-    margin-left: 10px;  /* Décale le URE vers la droite pour laisser la place à l'image */
+    margin-left: 9px;  /* Décale le URE vers la droite pour laisser la place à l'image */
     display: inline-block;
 }
 
