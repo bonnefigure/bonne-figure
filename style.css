@@ -522,15 +522,15 @@ body.a_propos_about .align-right {
 
     /* Taille et position des images sur mobile */
     .onne {
-        height: 22px;    /* Taille réduite pour petit écran */
-        top:10px;        /* Aligné verticalement au b */
-        right: -24px;      /* Placé dans la marge créée ci-dessus */
+        height: 18px;    /* Taille réduite pour petit écran */
+        top:13px;        /* Aligné verticalement au b */
+        right: -9px;      /* Placé dans la marge créée ci-dessus */
     }
 
     .fig {
-        height: 26px;    /* Taille réduite pour petit écran */
-        top: 8px;      /* Ajusté pour ne pas chevaucher le texte */
-        left: 43px;       /* Placé dans la marge créée ci-dessus */
+        height: 21px;    /* Taille réduite pour petit écran */
+        top: 10px;      /* Ajusté pour ne pas chevaucher le texte */
+        left: 47px;       /* Placé dans la marge créée ci-dessus */
     }
     
     /* ------------------------------------------------
@@ -591,7 +591,7 @@ body.a_propos_about .align-right {
 
     .btn-about-en {
     right: 10px;
-    color: #A03C5A;
+    color: #787369;
     }
 
     /* Forcer la couleur du span [lang="en"] */
@@ -656,7 +656,7 @@ body.a_propos_about .align-right {
     /* Bouton Anglais : on déplace la couleur ICI (sur le lien) */
     body:not(.index) .btn-back-en {
     right: 10px;
-    color: var(--back-en-color, #A03C5A); 
+    color: var(--back-en-color, #787369); 
     }
 
     /* On force le texte à hériter de la couleur du lien parent */
