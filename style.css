@@ -428,17 +428,25 @@ body.a_propos_about .align-right {
     /* ------------------------------------------------
        LAYOUT GÉNÉRAL MOBILE
     ------------------------------------------------ */
+
     body {
-        overflow: hidden !important; /* 1. On bloque le body pour figer l'interface de Chrome */
-        height: 100dvh !important;   /* 2. On prend exactement la hauteur visible (Dynamic Viewport) */
+        overflow: auto !important; 
+        min-height: 100vh;
         font-size: 1.3em;
     }
     
+    /* 2. La boîte grandit avec le contenu (elle ne scrolle plus en interne) */
     .split {
         flex-direction: column;
-        height: 100dvh !important;   /* 3. La boîte prend tout l'écran */
-        overflow-y: auto !important; /* 4. C'est CE bloc qui gère le scroll maintenant ! */
-        -webkit-overflow-scrolling: touch; /* 5. Scroll super fluide sur iOS */
+        height: auto !important;   
+        overflow: visible !important; 
+    }
+    
+    /* 3. On blinde le header pour qu'il reste toujours au-dessus de tout */
+    .site-header {
+        position: fixed;
+        top: 0;
+        z-index: 9999 !important; /* Force le passage au premier plan */
     }
     
     .column {
