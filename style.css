@@ -797,5 +797,27 @@ body.a_propos_about .align-right {
     margin-top: 0;
 }
 
+@media (max-width: 768px) {
+    /* Support pour Chrome iOS - barre d'URL */
+    @supports (-webkit-touch-callout: none) {
+        body:not(.index) .header-left,
+        body:not(.index) .header-right {
+            padding-top: 20px; /* Au lieu de 10px */
+        }
+        
+        .index-rebus .header-left,
+        .index-rebus .header-right {
+            padding-top: 20px; /* Au lieu de 10px */
+        }
+        
+        body:not(.index) .btn-back-fr,
+        body:not(.index) .btn-back-en,
+        body.index .btn-about-fr,
+        body.index .btn-about-en {
+            bottom: 20px; /* Au lieu de 10px */
+        }
+    }
+}
+
 
 } /* FIN @media */
