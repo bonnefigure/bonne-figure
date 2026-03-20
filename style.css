@@ -425,55 +425,80 @@ body.a_propos_about .align-right {
 
 @media (max-width: 768px) {
     
-    /* ------------------------------------------------
-       LAYOUT GÉNÉRAL MOBILE
-    ------------------------------------------------ */
-
+    /* --- OPTION 2 PAR DÉFAUT (SAFARI / AUTRES) --- */
     body {
-        overflow: auto !important; 
+        overflow: auto !important;
+        height: auto !important;
         min-height: 100vh;
+        min-height: 100dvh; /* Utilise le plein écran dynamique si possible */
         font-size: 1.3em;
+        background-color: var(--column-color, white); /* Garde ta couleur de thème */
     }
-    
-    /* 2. La boîte grandit avec le contenu (elle ne scrolle plus en interne) */
+
+    body.index {
+        background-color: white; 
+    }
+
     .split {
+        display: flex;
         flex-direction: column;
-        height: auto !important;   
-        overflow: visible !important; 
+        height: auto !important;
+        overflow: visible !important;
     }
-    
-    /* 3. On blinde le header pour qu'il reste toujours au-dessus de tout */
-    .site-header {
-        position: fixed;
-        top: 0;
-        z-index: 9999 !important; /* Force le passage au premier plan */
-    }
-    
+
     .column {
         width: 100%;
         padding: 10px;
-        overflow-y: visible; /* Les colonnes grandissent selon leur contenu */
+        height: auto !important;
+        overflow-y: visible !important;
+    }
+
+    /* --- OPTION 1 FORCÉE POUR CHROME IOS (via le JS) --- */
+    .is-chrome-ios body {
+        overflow: hidden !important;
+        height: 100dvh !important;
+        position: fixed;
+        width: 100%;
+    }
+    .is-chrome-ios .split {
+        display: flex;
+        flex-direction: column;
+        height: 100dvh !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* --- AJUSTEMENTS COMMUNS FIXES --- */
+    .site-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        padding-top: env(safe-area-inset-top, 0px);
+        pointer-events: none; /* Pour pouvoir cliquer sur les images dessous */
     }
     
+    .header-left, .header-right {
+        pointer-events: auto; /* Mais on peut cliquer sur le rébus */
+    }
+
+    .btn-about-fr, .btn-about-en, .btn-back-fr, .btn-back-en {
+        position: fixed;
+        bottom: calc(15px + env(safe-area-inset-bottom, 0px)) !important;
+        top: auto !important;
+        z-index: 1001;
+    }
+
     p {
         hyphens: none !important;
     }
 
-    body {
-    background-color: var(--column-color, white); 
-    
-    min-height: 100vh;
-
-    min-height: 100dvh; 
-    }
-
-    body.index {
-    background-color: white; 
-    }
-
     body.a_propos_about .align-right {
-    position: static;
+        position: static;
     }
+
+    /* Garde ici la suite de ton CSS (Headers mobile, Rébus, etc.) */
     
     /* ------------------------------------------------
        HEADERS MOBILE

@@ -179,5 +179,12 @@
         }
     }
 </script>
+<script>
+  // Détecter si c'est Chrome sur iOS
+  var isChromeIOS = /CriOS/i.test(navigator.userAgent);
+  if (isChromeIOS) {
+    document.documentElement.classList.add('is-chrome-ios');
+  }
+</script>
 </body>
 </html>
