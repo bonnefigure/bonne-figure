@@ -797,7 +797,7 @@ body.a_propos_about .align-right {
     margin-top: 0;
 }
 
-@media (max-worth: 768px) {
+@media (max-width: 768px) {
     .site-header {
         padding-top: env(safe-area-inset-top, 0px);
     }
