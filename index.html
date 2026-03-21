@@ -120,9 +120,9 @@
         </section>
     </main>
 
-    <!-- Masonry.js -->
+
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <!-- imagesLoaded pour attendre le chargement des images -->
+
     <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
     
 <script>
@@ -130,7 +130,6 @@
     var scrollContainer = document.querySelector('.column.left');
     var isMobile = window.innerWidth <= 768;
 
-    // 1. On lance Masonry (on attend que les images soient là pour éviter les chevauchements)
     imagesLoaded(grid, function() {
         new Masonry(grid, {
             itemSelector: '.masonry-item',
@@ -140,12 +139,10 @@
             horizontalOrder: true
         });
 
-        // Une fois calculé, on affiche la grille d'un coup sec
+
         grid.style.opacity = '1';
     });
 
-    // 2. Sauvegarde de la position (Sécurité pour le scroll)
-    // Même si history.back() est utilisé, c'est bien de garder cette mémoire
     var projectLinks = document.querySelectorAll('.masonry-item a');
     projectLinks.forEach(function(link) {
         link.addEventListener('click', function() {
@@ -155,7 +152,7 @@
     });
 </script>
 <script>
-    // Liste des couleurs correspondant à vos thèmes (sans le noir)
+
     var colors = [
         { bg: '#45d7b3', aboutFr: 'black', aboutEn: '#A03C5A' },  // turquoise
         { bg: '#A03C5A', aboutFr: 'black', aboutEn: '#45d7b3' },  // rouge
@@ -163,13 +160,13 @@
         { bg: '#F2F200', aboutFr: 'black', aboutEn: '#787369' }   // jaune
     ];
     
-    // Choisir un thème aléatoire
+
     var randomTheme = colors[Math.floor(Math.random() * colors.length)];
     
-    // Appliquer les couleurs
+
     document.querySelector('.column.right').style.backgroundColor = randomTheme.bg;
     
-    // Desktop uniquement : bouton about combiné
+
     var btnAbout = document.querySelector('.btn-about');
     if (btnAbout) {
         btnAbout.style.color = randomTheme.aboutFr;
@@ -180,7 +177,7 @@
     }
 </script>
 <script>
-  // Détecter si c'est Chrome sur iOS
+
   var isChromeIOS = /CriOS/i.test(navigator.userAgent);
   if (isChromeIOS) {
     document.documentElement.classList.add('is-chrome-ios');
