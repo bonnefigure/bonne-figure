@@ -190,35 +190,33 @@ text-align: right
     padding-top: 30px; /* Ton alignement fixe pour le texte */
 }
 
-/* Style de base commun (sans la taille) */
+
 .rebus-img {
     position: absolute;
     width: auto; /* Garde les proportions */
     pointer-events: none;
 }
 
-/* Réglage indépendant pour l'image de GAUCHE ("onne") */
+
 .onne {
-    height: 17px;  /* Ajuste cette valeur selon ton image */
-    top: 33px;     /* Position verticale */
-    right: 30px;   /* Position horizontale */
+    height: 17px;
+    top: 33px;
+    right: 30px;
 }
 
-/* Réglage indépendant pour l'image de DROITE ("fig") */
 .fig {
-    height: 22px; /* Ajuste cette valeur selon ton image */
-    top: 29px;    /* Tu peux même mettre des valeurs négatives si l'image dépasse */
-    left: 20px;    /* Position horizontale */
+    height: 22px; 
+    top: 29px;
+    left: 30px;
 }
 
-/* On décale le texte pour qu'il ne soit pas masqué par l'image */
 .index-rebus .letter-b {
-    margin-right: 52px; /* Décale le B vers la gauche pour laisser la place à l'image */
+    margin-right: 52px;
     display: inline-block;
 }
 
 .index-rebus .letter-ure {
-    margin-left: 9px;  /* Décale le URE vers la droite pour laisser la place à l'image */
+    margin-left: 18px;
     display: inline-block;
 }
 
