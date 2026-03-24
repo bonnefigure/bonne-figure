@@ -174,7 +174,18 @@ text-align: right
     width: 50%;
     padding: 30px 30px 0 30px;
     background: transparent;
-    pointer-events: auto;
+    position: relative;
+    
+    /* ÉTAPE A : On dit à la colonne de ne pas capter les clics */
+    pointer-events: none; 
+}
+
+/* ÉTAPE B : On dit uniquement aux éléments du rébus de capter les clics */
+.index-rebus .letter-b, 
+.index-rebus .letter-ure, 
+.rebus-img {
+    pointer-events: auto; 
+    cursor: pointer;
 }
 
 .header-left {
@@ -196,7 +207,8 @@ text-align: right
 .rebus-img {
     position: absolute;
     width: auto; /* Garde les proportions */
-    pointer-events: none;
+    pointer-events: auto;
+    cursor: pointer;
 }
 
 .onne {
@@ -211,14 +223,26 @@ text-align: right
     left: 30px;
 }
 
-.index-rebus .letter-b {
-    margin-right: 52px;
+.index-rebus .letter-b,
+.index-rebus .letter-ure {
     display: inline-block;
+    pointer-events: auto;
+    cursor: pointer;
+    position: relative; /* Nécessaire pour le bouclier invisible */
 }
 
-.index-rebus .letter-ure {
-    margin-left: 18px;
-    display: inline-block;
+.index-rebus .letter-b { margin-right: 52px; }
+.index-rebus .letter-ure { margin-left: 18px; }
+
+/* Le bouclier invisible (hitbox) */
+.index-rebus .letter-b::after,
+.index-rebus .letter-ure::after {
+    content: "";
+    position: absolute;
+    top: -5px;    /* Augmente la zone de 10px en haut */
+    bottom: 0px; /* en bas */
+    left: -5px;   /* à gauche */
+    right: -5px;  /* à droite : c'est ça qui va combler le vide */
 }
 
 /* ======================================================

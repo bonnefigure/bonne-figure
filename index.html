@@ -182,7 +182,18 @@
     document.documentElement.classList.add('is-chrome-ios');
   }
 </script>
+<script>
+    // On cible uniquement les lettres et les images du header
+    const rebusElements = document.querySelectorAll('.letter-b, .letter-ure, .rebus-img');
+    
+    rebusElements.forEach(el => {
+        el.addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    });
+</script>
 <script data-goatcounter="https://etesecret.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
+        async src="//gc.zgo.at/count.js">
+</script>
 </body>
 </html>
