@@ -167,6 +167,17 @@ text-align: right
     z-index: 1000;
     pointer-events: none; /* permet de cliquer à travers */
 }
+.header-link {
+    text-decoration: none; /* Enlève le soulignement */
+    color: inherit;        /* Garde la couleur noire du texte */
+    display: flex;         /* Garde l'alignement gauche/droite */
+    width: 100%;
+    justify-content: space-between;
+}
+
+.site-header {
+    cursor: pointer;
+}
 .header-left,
 .header-right {
     font-size: inherit;
