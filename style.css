@@ -791,7 +791,7 @@ body.a_propos_about .align-right {
     /* À propos */
     body.a_propos_about .column.right {
         padding-top: 25px !important;
-        padding-bottom: 15px !important;
+        padding-bottom: 25px !important;
     }
     
     /* Thème black - couleurs spécifiques */
