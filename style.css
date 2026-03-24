@@ -167,17 +167,7 @@ text-align: right
     z-index: 1000;
     pointer-events: none; /* permet de cliquer à travers */
 }
-.header-link {
-    text-decoration: none; /* Enlève le soulignement */
-    color: inherit;        /* Garde la couleur noire du texte */
-    display: flex;         /* Garde l'alignement gauche/droite */
-    width: 100%;
-    justify-content: space-between;
-}
 
-.site-header {
-    cursor: pointer;
-}
 .header-left,
 .header-right {
     font-size: inherit;
@@ -186,9 +176,11 @@ text-align: right
     background: transparent;
     pointer-events: auto;
 }
+
 .header-left {
     text-align: right;
 }
+
 .header-right {
     text-align: left;
     color: var(--header-right-color, black);
@@ -201,13 +193,11 @@ text-align: right
     padding-top: 30px; /* Ton alignement fixe pour le texte */
 }
 
-
 .rebus-img {
     position: absolute;
     width: auto; /* Garde les proportions */
     pointer-events: none;
 }
-
 
 .onne {
     height: 17px;
