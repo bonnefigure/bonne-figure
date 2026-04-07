@@ -105,21 +105,31 @@ text-align: right
 .contact-mobile {
     display: none;
 }
-.site-header h1 {
+
+h1, h2 {
     margin: 0;
     padding: 0;
-    font-weight: inherit; 
-    display: flex; 
+    /* On force la taille à 1em pour qu'ils fassent EXACTEMENT la taille du body (1.3em) */
+    font-size: 1em !important; 
+    font-weight: normal;
+    line-height: inherit;
+}
+
+/* On s'assure que le header reste en flex pour ton rébus/nom */
+.site-header h1 {
+    display: flex;
     width: 100%;
 }
+
 .column.left h2 {
-    margin: 0;
-    padding: 0;
-    font-size: inherit;      
-    font-weight: normal;     
-    line-height: inherit;    
-    display: block;          
-    margin-bottom: 1.3em;    
+    display: block;
+    font-size: 1em !important; 
+    font-weight: normal;
+    
+    margin-top: 20px;    
+    margin-bottom: 0px;  
+    
+    line-height: 1.3em;
 }
 /* ======================================================
    MASONRY GRID (INDEX)
