@@ -105,7 +105,22 @@ text-align: right
 .contact-mobile {
     display: none;
 }
-
+.site-header h1 {
+    margin: 0;
+    padding: 0;
+    font-size: inherit; /* Il prend la taille définie dans ton header */
+    font-weight: inherit; /* Il ne sera pas plus gras que prévu */
+    display: flex; /* Garde l'alignement gauche/droite */
+    width: 100%;
+}
+.site-header h2 {
+    margin: 0;
+    padding: 0;
+    font-size: inherit; /* Il prend la taille définie dans ton header */
+    font-weight: inherit; /* Il ne sera pas plus gras que prévu */
+    display: flex; /* Garde l'alignement gauche/droite */
+    width: 100%;
+}
 /* ======================================================
    MASONRY GRID (INDEX)
 ====================================================== */
