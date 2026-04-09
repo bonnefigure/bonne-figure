@@ -23,73 +23,91 @@
 
     <main class="split">
         <section class="column left">
-            <img src="images/pale-figure/les-petits-vaincront.png" alt="Projet 1" class="gallery-image medium" data-text="text1">
-            <img src="images/image2.jpg" alt="Projet 2" class="gallery-image medium" data-text="text2">
-            <img src="images/image3.jpg" alt="Projet 3" class="gallery-image small" data-text="text3">
-            <img src="images/image4.jpg" alt="Projet 4" class="gallery-image large" data-text="text4">
-            <img src="images/image5.jpg" alt="Projet 5" class="gallery-image medium" data-text="text5">
+            <img src="images/pale-figure/les-petits-vaincront.png" alt="Projet 5" class="gallery-image small align-left" data-text="text5">
+            <img src="images/pale-figure/les-petits-vaincront.png" alt="Projet 4" class="gallery-image medium align-center" data-text="text4">
+            <img src="images/pale-figure/les-petits-vaincront.png" alt="Projet 3" class="gallery-image large align-right" data-text="text3">
+            <img src="images/pale-figure/les-petits-vaincront.png" alt="Projet 2" class="gallery-image medium align-center" data-text="text2">
+            <img src="images/pale-figure/les-petits-vaincront.png" alt="Projet 2" class="gallery-image medium align-left" data-text="text2">
+            <img src="images/pale-figure/les-petits-vaincront.png" alt="Projet 2" class="gallery-image small align-center" data-text="text2">
+            <img src="images/pale-figure/les-petits-vaincront.png" alt="Projet 2" class="gallery-image small align-left" data-text="text2">
+            <img src="images/pale-figure/les-petits-vaincront.png" alt="Projet 2" class="gallery-image xl align-center" data-text="text2">
         </section>
 
         <section class="column right">
-            <div class="text-content" id="text1">
-                <h2>Titre du projet 1</h2>
-                <p>Description du projet en français. <span lang="en">Project description in English.</span></p>
-                <p>Lieu<br>2025<br>technique <span lang="en">technique</span></p>
-            </div>
-            <div class="text-content" id="text2">
-                <h2>Titre du projet 2</h2>
-                <p>Description du projet en français. <span lang="en">Project description in English.</span></p>
-            </div>
-            <div class="text-content" id="text3">
-                <h2>Titre du projet 3</h2>
-                <p>Description...</p>
+            <p id="intro-text">Dans cette arrière-salle, nous faisons un pas de côté pour explorer et découvrir les arcanes de nos figures : sources, origines, machinations, esquisses et ébauches. On y cultive des pensées, des réflexions, des fictions, des théories et des spéculations.</p>
+            <div class="text-content" id="text5">
+                <h2>Titre 5 <span lang="en">Title</span> ǀ 09.04.2026</h2>
+                <p>Description fr <span lang="en">Description en</span></p>
+                <p>François</p>
             </div>
             <div class="text-content" id="text4">
-                <h2>Titre du projet 4</h2>
-                <p>Description...</p>
+                <h2>Titre 4 <span lang="en">Title</span> ǀ 09.04.2026</h2>
+                <p>Description fr <span lang="en">Description en</span></p>
+                <p>Florian</p>
             </div>
-            <div class="text-content" id="text5">
-                <h2>Titre du projet 5</h2>
-                <p>Description...</p>
+            <div class="text-content" id="text3">
+                <h2>Titre 3 <span lang="en">Title</span> ǀ 09.04.2026</h2>
+                <p>Description fr <span lang="en">Description en</span></p>
+                <p>François</p>
+            </div>
+            <div class="text-content" id="text2">
+                <h2>Titre 2 <span lang="en">Title</span> ǀ 09.04.2026</h2>
+                <p>Description fr <span lang="en">Description en</span></p>
+                <p>Florian</p>
+            </div>
+            <div class="text-content" id="text1">
+                <h2>Titre 1 <span lang="en">Title</span> ǀ 09.04.2026</h2>
+                <p>Description fr <span lang="en">Description en</span></p>
+                <p>François</p>
             </div>
         </section>
     </main>
 
     <script>
-        const images = document.querySelectorAll('.gallery-image');
-        const texts = document.querySelectorAll('.text-content');
+    const images = document.querySelectorAll('.gallery-image');
+    const texts = document.querySelectorAll('.text-content');
+    const introText = document.getElementById('intro-text');
 
-        images.forEach(img => {
-            img.addEventListener('click', function() {
-                texts.forEach(t => t.classList.remove('active'));
-                const textId = this.getAttribute('data-text');
-                document.getElementById(textId).classList.add('active');
-            });
+    images.forEach(img => {
+        img.addEventListener('click', function() {
+            if (introText) introText.style.display = 'none';
+            texts.forEach(t => t.classList.remove('active'));
+            const textId = this.getAttribute('data-text');
+            document.getElementById(textId).classList.add('active');
         });
-    </script>
+    });
+</script>
 
-    <script>
-    var colors = [
-        { bg: '#A000F0', aboutFr: 'black', aboutEn: '#A03C5A' },  // turquoise
-        { bg: '#467D65', aboutFr: 'black', aboutEn: '#45d7b3' },  // rouge
-        { bg: '#F56E14', aboutFr: 'black', aboutEn: '#45d7b3' },  // brun
-        { bg: '#6E6E78', aboutFr: 'black', aboutEn: '#787369' }   // jaune
-    ];
-    
-    var randomTheme = colors[Math.floor(Math.random() * colors.length)];
-    
-    // CHANGEMENT : On applique à .column.left au lieu de .column.right
-    document.querySelector('.column.left').style.backgroundColor = randomTheme.bg;
-    
-    // CHANGEMENT : Ciblage de .btn-back-bottom
-    var btnBack = document.querySelector('.btn-back-bottom');
-    if (btnBack) {
-        btnBack.style.color = randomTheme.aboutFr;
-        var spanEn = btnBack.querySelector('[lang="en"]');
-        if (spanEn) {
-            spanEn.style.color = randomTheme.aboutEn;
-        }
+<script>
+var colors = [
+    { bg: '#A000F0', fr: 'black', en: '#F56E14' },
+    { bg: '#467D65', fr: 'black', en: '#F56E14' },
+    { bg: '#F56E14', fr: 'black', en: '#A000F0' },
+    { bg: '#6E6E78', fr: 'black', en: '#F56E14' }
+];
+
+var randomTheme = colors[Math.floor(Math.random() * colors.length)];
+
+var colLeft = document.querySelector('.column.left');
+if (colLeft) colLeft.style.backgroundColor = randomTheme.bg;
+
+var btnBack = document.querySelector('.btn-back-bottom');
+if (btnBack) {
+    btnBack.style.color = randomTheme.fr;
+    btnBack.style.textDecorationColor = randomTheme.fr;
+    var spanEnBtn = btnBack.querySelector('[lang="en"]');
+    if (spanEnBtn) {
+        spanEnBtn.style.color = randomTheme.en;
+        spanEnBtn.style.textDecorationColor = randomTheme.en;
     }
-    </script>
+}
+
+var textsEnRight = document.querySelectorAll('.column.right [lang="en"]');
+textsEnRight.forEach(function(el) {
+    el.style.color = randomTheme.en;
+});
+</script>
+
+
 </body>
 </html>

@@ -924,14 +924,14 @@ body.a_propos_about .align-right {
 
 /* Colonne GAUCHE : Couleur */
 .pale-figure .column.left {
-    background: #45d7b3;
-    padding-top: 55px;
+    padding-top: 30px;
+    padding-bottom: 60px;
 }
 
 /* Colonne DROITE : Blanc */
 .pale-figure .column.right {
     background: white;
-    padding-top: 80px;
+    padding-top: 30px;
 }
 
 .pale-figure .gallery-image {
@@ -940,9 +940,10 @@ body.a_propos_about .align-right {
     cursor: pointer;
 }
 
-.pale-figure .gallery-image.large { width: 100%; }
-.pale-figure .gallery-image.medium { width: 66.666%; }
-.pale-figure .gallery-image.small { width: 50%; }
+.pale-figure .gallery-image.xl { width: 100%; }
+.pale-figure .gallery-image.large { width: 75%; }
+.pale-figure .gallery-image.medium { width: 50%; }
+.pale-figure .gallery-image.small { width: 25%; }
 
 .pale-figure .text-content {
     display: none;
@@ -980,6 +981,44 @@ body.a_propos_about .align-right {
     left: 30px;
     text-decoration: none;
     z-index: 1001;
+}
+
+/* On retire le soulignement global pour le gérer par élément */
+.pale-figure .btn-back-bottom {
+    text-decoration: none;
+}
+
+/* Au survol, on force le soulignement */
+.pale-figure .btn-back-bottom:hover {
+    text-decoration: underline;
+    /* La couleur de base du soulignement (pour "retour") */
+    text-decoration-color: black; 
+}
+
+/* Au survol, le span anglais a sa propre couleur de soulignement */
+.pale-figure .btn-back-bottom:hover [lang="en"] {
+    text-decoration: underline;
+    /* Cette couleur sera écrasée par le JavaScript */
+    text-decoration-color: inherit; 
+}
+
+#intro-text {
+    margin-top: 0;
+}
+
+.align-left {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.align-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.align-right {
+    margin-left: auto;
+    margin-right: 0;
 }
 
 @media (max-width: 768px) {
