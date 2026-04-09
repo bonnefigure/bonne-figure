@@ -894,145 +894,91 @@ body.a_propos_about .align-right {
 
 }
 
-
 /* ======================================================
-   PALE-FIGURE
+   PALE-FIGURE (Desktop)
 ====================================================== */
+.pale-figure { margin: 0; height: 100vh; overflow: hidden; }
+.pale-figure .split { display: flex; height: 100vh; }
+.pale-figure .column { width: 50%; overflow-y: auto; padding: 30px; scrollbar-width: none; }
+.pale-figure .column::-webkit-scrollbar { display: none; }
 
-.pale-figure {
-    margin: 0;
-    height: 100vh;
-    overflow: hidden;
-}
+.pale-figure .column.left { padding-top: 30px; padding-bottom: 80px; }
+.pale-figure .column.right { background: white; padding-top: 30px; padding-bottom: 80px; }
 
-.pale-figure .split {
-    display: flex;
-    height: 100vh;
-}
-
-.pale-figure .column {
-    width: 50%;
-    overflow-y: auto;
-    padding: 30px;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-}
-
-.pale-figure .column::-webkit-scrollbar {
-    display: none;
-}
-
-/* Colonne GAUCHE : Couleur */
-.pale-figure .column.left {
-    padding-top: 30px;
-    padding-bottom: 60px;
-}
-
-/* Colonne DROITE : Blanc */
-.pale-figure .column.right {
-    background: white;
-    padding-top: 30px;
-}
-
-.pale-figure .gallery-image {
-    display: block;
-    margin-bottom: 30px;
-    cursor: pointer;
-}
-
+.pale-figure .gallery-image { display: block; margin-bottom: 30px; cursor: pointer; }
 .pale-figure .gallery-image.xl { width: 100%; }
 .pale-figure .gallery-image.large { width: 75%; }
 .pale-figure .gallery-image.medium { width: 50%; }
 .pale-figure .gallery-image.small { width: 25%; }
 
-.pale-figure .text-content {
-    display: none;
-}
-
-.pale-figure .text-content.active {
-    display: block;
-}
+.pale-figure .text-content { display: none; }
+.pale-figure .text-content.active { display: block; }
 
 .pale-figure .site-header-bottom {
-    position: fixed;
-    bottom: 30px;
-    left: 0;
-    right: 0;
-    display: flex;
-    z-index: 1000;
-    pointer-events: none;
+    position: fixed; bottom: 30px; left: 0; right: 0;
+    display: flex; z-index: 1000; pointer-events: none;
 }
-
-.pale-figure .header-left {
-    width: 50%;
-    text-align: right;
-    padding-right: 30px;
-}
-
-.pale-figure .header-right {
-    width: 50%;
-    text-align: left;
-    padding-left: 30px;
-}
+.pale-figure .header-left { width: 50%; text-align: right; padding-right: 30px; }
+.pale-figure .header-right { width: 50%; text-align: left; padding-left: 30px; }
 
 .pale-figure .btn-back-bottom {
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    text-decoration: none;
-    z-index: 1001;
+    position: fixed; bottom: 30px; left: 30px;
+    text-decoration: none; z-index: 3000; 
 }
 
-/* On retire le soulignement global pour le gérer par élément */
-.pale-figure .btn-back-bottom {
-    text-decoration: none;
-}
+.pale-figure .btn-back-bottom:hover { text-decoration: underline; text-decoration-color: black; }
+.pale-figure .btn-back-bottom:hover [lang="en"] { text-decoration: underline; text-decoration-color: inherit; }
 
-/* Au survol, on force le soulignement */
-.pale-figure .btn-back-bottom:hover {
-    text-decoration: underline;
-    /* La couleur de base du soulignement (pour "retour") */
-    text-decoration-color: black; 
-}
+#intro-text { margin-top: 0; }
 
-/* Au survol, le span anglais a sa propre couleur de soulignement */
-.pale-figure .btn-back-bottom:hover [lang="en"] {
-    text-decoration: underline;
-    /* Cette couleur sera écrasée par le JavaScript */
-    text-decoration-color: inherit; 
-}
-
-#intro-text {
-    margin-top: 0;
-}
-
-.align-left {
-    margin-left: 0;
-    margin-right: auto;
-}
-
-.align-center {
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.align-right {
-    margin-left: auto;
-    margin-right: 0;
-}
+.align-left { margin-left: 0; margin-right: auto; }
+.align-center { margin-left: auto; margin-right: auto; }
+.align-right { margin-left: auto; margin-right: 0; }
 
 @media (max-width: 768px) {
-    .pale-figure .split {
-        flex-direction: column;
-        height: auto;
+    body.pale-figure .split { 
+        display: block !important; 
     }
-    .pale-figure .column {
-        width: 100%;
+    body.pale-figure .column.left {
+        width: 100% !important;
+        min-height: 100vh !important;
+        padding-top: 80px !important;
+        display: block !important;
     }
+    body.pale-figure #right-col {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        z-index: 3500 !important;
+        display: none !important; 
+        padding: 30px !important;
+        padding-top: 100px !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        order: unset !important;
+    }
+    body.pale-figure #right-col.mobile-open {
+        display: block !important; 
+    }
+    body.pale-figure .site-header-bottom {
+        bottom: auto !important;
+        top: 30px !important;
+    }
+
+    /* On remonte le bouton au-dessus de l'overlay blanc */
+    .pale-figure .btn-back-bottom {
+        z-index: 4000 !important;
+    }
+
+    /* On s'assure que le header suit aussi le mouvement */
     .pale-figure .site-header-bottom {
-        bottom: auto;
-        top: 0;
+        z-index: 4000 !important;
     }
 }
+
 
 /* FIN @media */
