@@ -616,8 +616,8 @@ body.a_propos_about .align-right {
     .fig {
         height: 21px;
         top: 10px;
-        left: 47px;
-    }
+        left: 290px;
+    }s
     
     /* ------------------------------------------------
        NAVIGATION BAS
@@ -972,7 +972,6 @@ body.a_propos_about .align-right {
         display: block !important;
         height: auto !important;
         min-height: 100vh;
-        /* La couleur sera injectée ici par JS */
     }
 
     body.pale-figure .column.left {
