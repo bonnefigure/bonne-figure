@@ -938,6 +938,30 @@ body.a_propos_about .align-right {
 
 @media (max-width: 768px) {
 
+        body {
+        overflow: auto !important;
+        height: auto !important;
+        min-height: 100vh;
+        min-height: 100dvh; /* Utilise le plein écran dynamique si possible */
+        font-size: 1.3em;
+        background-color: var(--column-color, white); /* Garde ta couleur de thème */
+    }
+
+        .is-chrome-ios body {
+        overflow: hidden !important;
+        height: 100dvh !important;
+        position: fixed;
+        width: 100%;
+    }
+    .is-chrome-ios .split {
+        display: flex;
+        flex-direction: column;
+        height: 100dvh !important;
+        overflow-y: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+
     body.pale-figure {
         height: auto !important;
         overflow: visible !important;
