@@ -79,7 +79,6 @@
             const target = document.getElementById(textId);
             if (target) target.classList.add('active');
 
-            // MOBILE : On affiche l'overlay
             if (window.innerWidth <= 768) {
                 rightCol.classList.add('mobile-open');
                 document.body.style.overflow = 'hidden'; 
@@ -87,7 +86,6 @@
         });
     });
 
-    // Gestion du bouton retour
     btnBack.addEventListener('click', function(e) {
         if (window.innerWidth <= 768 && rightCol.classList.contains('mobile-open')) {
             e.preventDefault(); 
@@ -96,24 +94,28 @@
         }
     });
 
-    // Couleurs aléatoires
-    var colors = [
-        { bg: '#A000F0', fr: 'black', en: '#F56E14' },
-        { bg: '#467D65', fr: 'black', en: '#F56E14' },
-        { bg: '#F56E14', fr: 'black', en: '#A000F0' },
-        { bg: '#6E6E78', fr: 'black', en: '#F56E14' }
-    ];
+var colors = [
+    { bg: '#A000F0', fr: 'black', en: '#F56E14' },
+    { bg: '#467D65', fr: 'black', en: '#F56E14' },
+    { bg: '#F56E14', fr: 'black', en: '#A000F0' },
+    { bg: '#6E6E78', fr: 'black', en: '#F56E14' }
+];
 
-    var randomTheme = colors[Math.floor(Math.random() * colors.length)];
-    document.querySelector('.column.left').style.backgroundColor = randomTheme.bg;
-    btnBack.style.color = randomTheme.fr;
-    btnBack.style.textDecorationColor = randomTheme.fr;
-    var spanEnBtn = btnBack.querySelector('[lang="en"]');
-    if (spanEnBtn) {
-        spanEnBtn.style.color = randomTheme.en;
-        spanEnBtn.style.textDecorationColor = randomTheme.en;
-    }
-    document.querySelectorAll('.column.right [lang="en"]').forEach(el => el.style.color = randomTheme.en);
+var randomTheme = colors[Math.floor(Math.random() * colors.length)];
+
+const splitElem = document.querySelector('.pale-figure .split');
+if(splitElem) splitElem.style.setProperty('background-color', randomTheme.bg, 'important');
+
+const leftCol = document.querySelector('.pale-figure .column.left');
+if(leftCol) leftCol.style.setProperty('background-color', randomTheme.bg, 'important');
+
+btnBack.style.color = randomTheme.fr;
+var spanEnBtn = btnBack.querySelector('[lang="en"]');
+if (spanEnBtn) spanEnBtn.style.color = randomTheme.en;
+
+document.querySelectorAll('.column.right [lang="en"]').forEach(el => {
+    el.style.color = randomTheme.en;
+});
     </script>
 </body>
 </html>
