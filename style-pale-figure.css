@@ -67,6 +67,30 @@ html, body {
     box-sizing: border-box; /* Crucial pour que les paddings ne fassent pas déborder les éléments */
 }
 
+.pale-figure .btn-back-fr {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    z-index: 9999;
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.pale-figure .btn-back-en {
+    position: fixed;
+    top: 30px;
+    left: 90px; /* Ajusté pour ne pas chevaucher 'retour' */
+    z-index: 9999;
+    text-decoration: none;
+    display: block;
+}
+
+/* Hover effect commun */
+.btn-back-fr:hover, .btn-back-en:hover {
+    text-decoration: underline;
+}
+
 @media (max-width: 768px) {
 
         body {
