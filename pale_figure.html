@@ -18,8 +18,10 @@
         <span class="header-right">figure</span>
     </header>
 
-<a href="index.html" class="btn-back-fr" id="btn-back-fr">retour</a>
-<a href="index.html" class="btn-back-en" id="btn-back-en"><span lang="en">back</span></a>
+    <a href="index.html" class="btn-back" id="btn-back">retour <span lang="en">back</span></a>
+
+    <a href="index.html" class="btn-back-fr" id="btn-back-fr">retour</a>
+    <a href="index.html" class="btn-back-en" id="btn-back-en"><span lang="en">back</span></a>
 
     <main class="split">
         <section class="column left">
@@ -71,8 +73,10 @@
     const introText = document.getElementById('intro-text');
     const rightCol = document.getElementById('right-col');
     
-    // On cible les deux boutons retour d'un coup
-    const backButtons = document.querySelectorAll('.btn-back-fr, .btn-back-en');
+    // NOUVEAU : On cible TOUS les boutons retour possibles (Desktop combiné + Mobile séparés)
+    const allBackButtons = document.querySelectorAll('.btn-back, .btn-back-fr, .btn-back-en');
+    const btnBackDesktop = document.getElementById('btn-back');
+    const backButtonsMobile = document.querySelectorAll('.btn-back-fr, .btn-back-en');
 
     // 2. Gestion du clic sur les images (Ouvrir la description)
     images.forEach(img => {
@@ -92,17 +96,13 @@
     });
 
     // 3. Gestion du clic sur les boutons retour (Fermer ou Partir)
-    backButtons.forEach(btn => {
+    // NOUVEAU : On applique l'écouteur à TOUS les boutons retour
+    allBackButtons.forEach(btn => {
         btn.addEventListener('click', function(e) {
-            // Si la colonne mobile est ouverte, on la ferme au lieu de quitter la page
-            if (rightCol.classList.contains('mobile-open')) {
+            // Si la colonne mobile est ouverte OU si on a un texte actif sur desktop, on "ferme"
+            if (rightCol.classList.contains('mobile-open') || document.querySelector('.text-content.active')) {
                 e.preventDefault(); 
-                rightCol.classList.remove('mobile-open');
-                document.body.style.overflow = ''; 
-                
-                // On remet l'intro (optionnel)
-                texts.forEach(t => t.classList.remove('active'));
-                if (introText) introText.style.display = 'block';
+                history.back(); // Utilisation de l'historique pour une navigation plus fluide
             }
         });
     });
@@ -124,8 +124,15 @@
     const leftCol = document.querySelector('.pale-figure .column.left');
     if(leftCol) leftCol.style.setProperty('background-color', randomTheme.bg, 'important');
 
-    // On applique les couleurs aux DEUX boutons retour
-    backButtons.forEach(btn => {
+    // NOUVEAU : Application des couleurs au bouton Desktop combiné
+    if (btnBackDesktop) {
+        btnBackDesktop.style.color = randomTheme.fr;
+        const spanEn = btnBackDesktop.querySelector('[lang="en"]');
+        if (spanEn) spanEn.style.color = randomTheme.en;
+    }
+
+    // NOUVEAU : Application des couleurs aux boutons séparés Mobile
+    backButtonsMobile.forEach(btn => {
         if (btn.classList.contains('btn-back-fr')) {
             btn.style.color = randomTheme.fr;
         } else {
@@ -136,7 +143,7 @@
     document.querySelectorAll('.column.right [lang="en"]').forEach(el => {
         el.style.color = randomTheme.en;
     });
-    </script>
+</script>
 </body>
 </html>
 </body>
