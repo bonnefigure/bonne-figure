@@ -95,6 +95,18 @@ html, body {
 
 @media (max-width: 768px) {
 
+    body::-webkit-scrollbar,
+    .column::-webkit-scrollbar,
+    .split::-webkit-scrollbar,
+    #right-col::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    body, .column, .split, #right-col {
+        scrollbar-width: none !important;
+        -ms-overflow-style: none !important;
+    }
+
     body {
         overflow: auto !important;
         height: auto !important;
