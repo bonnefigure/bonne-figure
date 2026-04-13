@@ -114,14 +114,14 @@ html, body {
         background-color: var(--column-color, white);
     }
 
-    .is-chrome-ios body {
+    html.is-chrome-ios body.pale-figure {
         overflow: hidden !important;
         height: 100dvh !important;
         position: fixed;
         width: 100%;
     }
 
-    .is-chrome-ios .split {
+    html.is-chrome-ios body.pale-figure .split{
         display: flex !important;
         flex-direction: column;
         height: 100dvh !important;
