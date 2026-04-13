@@ -139,7 +139,7 @@ html, body {
     body.pale-figure {
         height: auto !important;
         overflow: visible !important;
-        background-color: white !important;
+        background-color: transparent !important;
     }
 
     body.pale-figure .split { 
