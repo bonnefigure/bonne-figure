@@ -67,18 +67,22 @@
     </main>
 
 <script>
-    // 1. Déclaration des variables
     const images = document.querySelectorAll('.gallery-image');
     const texts = document.querySelectorAll('.text-content');
     const introText = document.getElementById('intro-text');
     const rightCol = document.getElementById('right-col');
     
-    // NOUVEAU : On cible TOUS les boutons retour possibles (Desktop combiné + Mobile séparés)
     const allBackButtons = document.querySelectorAll('.btn-back, .btn-back-fr, .btn-back-en');
     const btnBackDesktop = document.getElementById('btn-back');
     const backButtonsMobile = document.querySelectorAll('.btn-back-fr, .btn-back-en');
 
-    // 2. Gestion du clic sur les images (Ouvrir la description)
+    function closeDescription() {
+        rightCol.classList.remove('mobile-open');
+        document.body.style.overflow = ''; 
+        texts.forEach(t => t.classList.remove('active'));
+        if (introText) introText.style.display = 'block';
+    }
+
     images.forEach(img => {
         img.addEventListener('click', function() {
             if (introText) introText.style.display = 'none';
@@ -92,22 +96,25 @@
                 rightCol.classList.add('mobile-open');
                 document.body.style.overflow = 'hidden'; 
             }
+
+            history.pushState({view: 'description'}, '');
         });
     });
 
-    // 3. Gestion du clic sur les boutons retour (Fermer ou Partir)
-    // NOUVEAU : On applique l'écouteur à TOUS les boutons retour
     allBackButtons.forEach(btn => {
         btn.addEventListener('click', function(e) {
-            // Si la colonne mobile est ouverte OU si on a un texte actif sur desktop, on "ferme"
-            if (rightCol.classList.contains('mobile-open') || document.querySelector('.text-content.active')) {
+            const isDescriptionOpen = rightCol.classList.contains('mobile-open') || document.querySelector('.text-content.active');
+            if (isDescriptionOpen) {
                 e.preventDefault(); 
-                history.back(); // Utilisation de l'historique pour une navigation plus fluide
+                history.back();
             }
         });
     });
 
-    // 4. Thème Aléatoire
+    window.addEventListener('popstate', function(event) {
+        closeDescription();
+    });
+
     var colors = [
         { bg: '#A000F0', fr: 'black', en: '#F56E14' },
         { bg: '#467D65', fr: 'black', en: '#F56E14' },
@@ -117,21 +124,18 @@
 
     var randomTheme = colors[Math.floor(Math.random() * colors.length)];
 
-    // Application des couleurs
     const splitElem = document.querySelector('.pale-figure .split');
     if(splitElem) splitElem.style.setProperty('background-color', randomTheme.bg, 'important');
 
     const leftCol = document.querySelector('.pale-figure .column.left');
     if(leftCol) leftCol.style.setProperty('background-color', randomTheme.bg, 'important');
 
-    // NOUVEAU : Application des couleurs au bouton Desktop combiné
     if (btnBackDesktop) {
         btnBackDesktop.style.color = randomTheme.fr;
         const spanEn = btnBackDesktop.querySelector('[lang="en"]');
         if (spanEn) spanEn.style.color = randomTheme.en;
     }
 
-    // NOUVEAU : Application des couleurs aux boutons séparés Mobile
     backButtonsMobile.forEach(btn => {
         if (btn.classList.contains('btn-back-fr')) {
             btn.style.color = randomTheme.fr;
@@ -144,7 +148,5 @@
         el.style.color = randomTheme.en;
     });
 </script>
-</body>
-</html>
 </body>
 </html>
