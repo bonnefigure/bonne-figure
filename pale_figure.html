@@ -147,6 +147,11 @@
     document.querySelectorAll('.column.right [lang="en"]').forEach(el => {
         el.style.color = randomTheme.en;
     });
+
+    var isChromeIOS = /CriOS/i.test(navigator.userAgent);
+  if (isChromeIOS) {
+    document.documentElement.classList.add('is-chrome-ios');
+  }
 </script>
 </body>
 </html>

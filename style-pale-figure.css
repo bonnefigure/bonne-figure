@@ -100,32 +100,39 @@ html, body {
         overflow: auto !important;
         height: auto !important;
         min-height: 100vh;
-        min-height: 100dvh; /* Utilise le plein écran dynamique si possible */
+        min-height: 100dvh;
         font-size: 1.3em;
-        background-color: var(--column-color, white); /* Garde ta couleur de thème */
+        background-color: var(--column-color, white);
     }
 
         body {
         overflow: auto !important;
         height: auto !important;
         min-height: 100vh;
-        min-height: 100dvh; /* Utilise le plein écran dynamique si possible */
+        min-height: 100dvh;
         font-size: 1.3em;
-        background-color: var(--column-color, white); /* Garde ta couleur de thème */
+        background-color: var(--column-color, white);
     }
 
-        .is-chrome-ios body {
+    .is-chrome-ios body {
         overflow: hidden !important;
         height: 100dvh !important;
         position: fixed;
         width: 100%;
     }
+
     .is-chrome-ios .split {
-        display: flex;
+        display: flex !important;
         flex-direction: column;
         height: 100dvh !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch;
+    }
+
+    .is-chrome-ios .column.left,
+    .is-chrome-ios #right-col {
+        height: auto !important;
+        overflow-y: visible !important;
     }
 
 
