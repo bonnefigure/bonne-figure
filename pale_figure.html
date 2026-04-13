@@ -148,7 +148,8 @@
         el.style.color = randomTheme.en;
     });
 
-    document.body.style.backgroundColor = randomTheme.bg;
+    document.documentElement.style.backgroundColor = randomTheme.bg;
+    document.body.style.setProperty('background-color', randomTheme.bg, 'important');
 
     var isChromeIOS = /CriOS/i.test(navigator.userAgent);
   if (isChromeIOS) {

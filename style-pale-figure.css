@@ -121,6 +121,10 @@ html, body {
         width: 100%;
     }
 
+    html {
+        background-color: inherit;
+    }
+
     html.is-chrome-ios body.pale-figure .split{
         display: flex !important;
         flex-direction: column;
@@ -139,7 +143,6 @@ html, body {
     body.pale-figure {
         height: auto !important;
         overflow: visible !important;
-        background-color: transparent !important;
     }
 
     body.pale-figure .split { 
