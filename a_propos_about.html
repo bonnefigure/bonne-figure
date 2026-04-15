@@ -1,15 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Redirection...</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>à propos — about</title>
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link href="../style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&display=swap" rel="stylesheet">
     <link rel="canonical" href="https://bonne-figure.fr/a-propos-about/">
-    <meta http-equiv="refresh" content="0; url=https://bonne-figure.fr/a-propos-about/">
 </head>
-<body>
+<body class="a_propos_about theme-white">
+    <a href="../" class="btn-back">retour <span lang="en">back</span></a>
+
+    <header class="site-header">
+        <h1>
+            <span class="header-left">bonne</span>
+            <span class="header-right">figure</span>
+        </h1>
+    </header>
+
+    <nav>
+        <a href="./" class="btn-about">à propos<span lang="en"> about</span></a>
+        <a href="./" class="btn-about-fr">à propos</a>
+        <a href="./" class="btn-about-en"><span lang="en">about</span></a>
+
+        <a href="../" 
+           onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); return false; }" 
+           class="btn-back">retour <span lang="en">back</span></a>
+           
+        <a href="../" 
+           onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); return false; }" 
+           class="btn-back-fr">retour</a>
+           
+        <a href="../" 
+           onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); return false; }" 
+           class="btn-back-en"><span lang="en">back</span></a>
+    </nav>
+
+    <main class="split">
+        <section class="column left">
+            <h2>à propos</h2>
+            <p>
+                Bonne Figure est un duo de design graphique basé à Nancy, composé de Florian Gaby et François de Houx.
+            </p>
+            <p>
+                Nous travaillons sur des projets d’identité visuelle, d’édition, de signalétique et de design web. 
+            </p>
+            <p>
+                <a href="mailto:contact@bonne-figure.fr">contact@bonne-figure.fr</a><br>
+                <a href="https://www.instagram.com/bonne.figure/" target="_blank">instagram</a>
+            </p>
+        </section>
+        <section class="column right">
+            <h2><span lang="en">about</span></h2>
+            <p lang="en">
+                Bonne Figure is a graphic design duo based in Nancy, France, formed by Florian Gaby and François de Houx.
+            </p>
+            <p lang="en">
+                We work on visual identity, publishing, signage, and web design projects.
+            </p>
+        </section>
+    </main>
+
     <script>
-        window.location.replace("https://bonne-figure.fr/a-propos-about/");
+        var isChromeIOS = /CriOS/i.test(navigator.userAgent);
+        if (isChromeIOS) {
+            document.documentElement.classList.add('is-chrome-ios');
+        }
     </script>
-    <p>La page a été déplacée. Si vous n'êtes pas redirigé, <a href="https://bonne-figure.fr/a-propos-about/">cliquez ici</a>.</p>
 </body>
 </html>
