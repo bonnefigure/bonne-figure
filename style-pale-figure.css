@@ -6,21 +6,21 @@ body {
     height: 100%;
     overflow: hidden;
     font-family: "Sorts Mill Goudy", serif;
-    font-size: 1.3em;
-    line-height: 1.3em;
+    font-size: 1.25em;
+    line-height: 1.27em;
     color: var(--text-color, black);
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* Internet Explorer et Edge */
 }
 .pale-figure { margin: 0; height: 100vh; overflow: hidden; }
 .pale-figure .split { display: flex; height: 100vh; }
-.pale-figure .column { width: 50%; overflow-y: auto; padding: 30px; scrollbar-width: none; }
+.pale-figure .column { width: 50%; overflow-y: auto; padding: 20px; scrollbar-width: none; }
 .pale-figure .column::-webkit-scrollbar { display: none; }
 
-.pale-figure .column.left { padding-top: 30px; padding-bottom: 60px; }
-.pale-figure .column.right { background: white; padding-top: 30px; padding-bottom: 80px; }
+.pale-figure .column.left { padding-top: 20px; padding-bottom: 60px; }
+.pale-figure .column.right { background: white; padding-top: 20px; padding-bottom: 80px; }
 
-.pale-figure .gallery-image { display: block; margin-bottom: 30px; cursor: pointer; }
+.pale-figure .gallery-image { display: block; margin-bottom: 20px; cursor: pointer; }
 .pale-figure .gallery-image.xl { width: 100%; }
 .pale-figure .gallery-image.large { width: 75%; }
 .pale-figure .gallery-image.medium { width: 50%; }
@@ -30,14 +30,14 @@ body {
 .pale-figure .text-content.active { display: block; }
 
 .pale-figure .site-header-bottom {
-    position: fixed; bottom: 30px; left: 0; right: 0;
+    position: fixed; bottom: 20px; left: 0; right: 0;
     display: flex; z-index: 1000; pointer-events: none;
 }
 .pale-figure .header-left { width: 50%; text-align: right; padding-right: 30px; }
 .pale-figure .header-right { width: 50%; text-align: left; padding-left: 30px; }
 
 .pale-figure .btn-back-bottom {
-    position: fixed; bottom: 30px; left: 30px;
+    position: fixed; bottom: 20px; left: 20px;
     text-decoration: none; z-index: 3000; 
 }
 
@@ -69,8 +69,8 @@ html, body {
 
 .pale-figure .btn-back {
     position: fixed;
-    bottom: 30px;
-    left: 30px;
+    bottom: 20px;
+    left: 20px;
     z-index: 9999;
     text-decoration: none;
     display: block;
