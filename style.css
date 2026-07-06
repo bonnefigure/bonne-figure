@@ -363,6 +363,27 @@ a {
     text-decoration-color: currentColor;
 }
 
+.btn-next {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    text-decoration: none;
+    color: var(--about-color, black);      /* "suivant" */
+    z-index: 1001;
+    pointer-events: auto;
+}
+.btn-next [lang="en"] {
+    color: var(--about-en-color, #A03C5A); /* "next" */
+}
+.btn-next:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--about-color, black);
+}
+.btn-next:hover [lang="en"] {
+    text-decoration: underline;
+    text-decoration-color: var(--about-en-color, #A03C5A);
+}
+
 .btn-back:hover [lang="en"] {
     text-decoration: underline;
     text-decoration-color: currentColor;
@@ -680,7 +701,8 @@ body.a_propos_about .column.left {
     /* ------------------------------------------------
        BOUTONS - INDEX
     ------------------------------------------------ */
-    .btn-about {
+    .btn-about,
+    .btn-next {
         display: none !important;
     }
 
