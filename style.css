@@ -577,7 +577,7 @@ body.a_propos_about .column.left {
 
     .btn-about-fr, .btn-about-en, .btn-back-fr, .btn-back-en {
         position: fixed;
-        bottom: calc(15px + env(safe-area-inset-bottom, 0px)) !important;
+        bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
         top: auto !important;
         z-index: 1001;
     }
@@ -915,7 +915,7 @@ body.a_propos_about .column.left {
 }
 
 body.a_propos_about .column.right {
-    padding-top: 25px !important;
+    padding-top: 45px !important;
     display: block !important;
     min-height: auto !important;
 }
