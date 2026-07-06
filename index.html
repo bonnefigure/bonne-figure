@@ -181,30 +181,47 @@
     <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
     
 <script>
-    var grid = document.querySelector('.masonry-grid');
-    var scrollContainer = document.querySelector('.column.left');
-    var isMobile = window.innerWidth <= 768;
+var grid = document.querySelector('.masonry-grid');
+var scrollContainer = document.querySelector('.column.left');
+var isMobile = window.innerWidth <= 768;
 
-    imagesLoaded(grid, function() {
-        new Masonry(grid, {
-            itemSelector: '.masonry-item',
-            columnWidth: '.masonry-item',
-            percentPosition: true,
-            gutter: 0,
-            horizontalOrder: true
-        });
+imagesLoaded(grid, function() {
 
-
-        grid.style.opacity = '1';
+    new Masonry(grid, {
+        itemSelector: '.masonry-item',
+        columnWidth: '.masonry-item',
+        percentPosition: true,
+        gutter: 0,
+        horizontalOrder: true
     });
 
-    var projectLinks = document.querySelectorAll('.masonry-item a');
-    projectLinks.forEach(function(link) {
-        link.addEventListener('click', function() {
-            var currentScroll = isMobile ? window.pageYOffset : scrollContainer.scrollTop;
-            sessionStorage.setItem('scrollPosition', currentScroll);
+    grid.style.opacity = '1';
+
+    var savedScroll = sessionStorage.getItem('scrollPosition');
+
+    if (savedScroll !== null) {
+        savedScroll = parseInt(savedScroll, 10);
+
+        requestAnimationFrame(function () {
+            if (isMobile) {
+                window.scrollTo(0, savedScroll);
+            } else {
+                scrollContainer.scrollTop = savedScroll;
+            }
+
+            sessionStorage.removeItem('scrollPosition');
         });
+    }
+});
+
+var projectLinks = document.querySelectorAll('.masonry-item a');
+
+projectLinks.forEach(function(link) {
+    link.addEventListener('click', function() {
+        var currentScroll = isMobile ? window.pageYOffset : scrollContainer.scrollTop;
+        sessionStorage.setItem('scrollPosition', currentScroll);
     });
+});
 </script>
 <script>
 
@@ -238,7 +255,6 @@
   }
 </script>
 <script>
-    // On cible uniquement les lettres et les images du header
     const rebusElements = document.querySelectorAll('.letter-b, .letter-ure, .rebus-img');
     
     rebusElements.forEach(el => {

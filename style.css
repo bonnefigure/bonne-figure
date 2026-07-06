@@ -31,7 +31,7 @@ body::-webkit-scrollbar {
     width: 50%;
     overflow-y: auto;
     padding: 20px;
-    padding-top: 65px;
+    padding-top: 60px;
     scrollbar-width: none; 
     -ms-overflow-style: none; 
 }

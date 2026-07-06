@@ -31,7 +31,6 @@
 </script>
 </head>
 <body class="ccam theme-brun">
-    <a href="../" class="btn-back">retour <span lang="en">back</span></a>
     
     <header class="site-header">
         <h1>
@@ -41,21 +40,13 @@
     </header>
 
     <nav>
-        <a href="../a-propos/" class="btn-about">à propos<span lang="en"> about</span></a>
-        <a href="../a-propos/" class="btn-about-fr">à propos</a>
-        <a href="../a-propos/" class="btn-about-en"><span lang="en">about</span></a>
+        <a href="#" class="btn-next">suivant<span lang="en"> next</span></a>
 
-        <a href="../" 
-           onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); return false; }" 
-           class="btn-back">retour <span lang="en">back</span></a>
-           
-        <a href="../" 
-           onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); return false; }" 
-           class="btn-back-fr">retour</a>
-           
-        <a href="../" 
-           onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); return false; }" 
-           class="btn-back-en"><span lang="en">back</span></a>
+         <a href="../" class="btn-back">retour <span lang="en">back</span></a>
+
+        <a href="../" class="btn-back-fr">retour</a>
+
+        <a href="../" class="btn-back-en"><span lang="en">back</span></a>
     </nav>
 
     <main class="split">
@@ -94,5 +85,6 @@
             document.documentElement.classList.add('is-chrome-ios');
         }
     </script>
+<script src="../next-project.js"></script>
 </body>
 </html>
