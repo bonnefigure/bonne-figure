@@ -195,6 +195,18 @@
 <script>
 var grid = document.querySelector('.masonry-grid');
 var scrollContainer = document.querySelector('.column.left');
+var currentScroll = 0;
+
+function trackScroll() {
+    currentScroll = window.pageYOffset || scrollContainer.scrollTop || document.documentElement.scrollTop;
+}
+
+window.addEventListener('scroll', trackScroll, { passive: true });
+scrollContainer.addEventListener('scroll', trackScroll, { passive: true });
+
+window.addEventListener('pagehide', function () {
+    sessionStorage.setItem('scrollPosition', currentScroll);
+});
 
 imagesLoaded(grid, function() {
 
@@ -213,29 +225,12 @@ imagesLoaded(grid, function() {
     if (savedScroll !== null) {
         savedScroll = parseInt(savedScroll, 10);
 
-        var attempts = 0;
-        var maxAttempts = 20;
-
-        var restoreScroll = setInterval(function () {
+        requestAnimationFrame(function () {
             window.scrollTo(0, savedScroll);
             scrollContainer.scrollTop = savedScroll;
-
-            attempts++;
-            if (attempts >= maxAttempts) {
-                clearInterval(restoreScroll);
-                sessionStorage.removeItem('scrollPosition');
-            }
-        }, 50);
+            sessionStorage.removeItem('scrollPosition');
+        });
     }
-});
-
-var projectLinks = document.querySelectorAll('.masonry-item a');
-
-projectLinks.forEach(function(link) {
-    link.addEventListener('click', function() {
-        var currentScroll = window.pageYOffset || scrollContainer.scrollTop;
-        sessionStorage.setItem('scrollPosition', currentScroll);
-    });
 });
 </script>
 <script>
