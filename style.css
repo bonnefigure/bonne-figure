@@ -596,7 +596,11 @@ body.a_propos_about .column.left {
 }
 
 /*temporaire pale figure :*/
-
+.footer-rebus .letter-le,
+.footer-rebus .letter-gure,
+.footer-rebus .rebus-img {
+    cursor: default;
+}
 
 /* ======================================================
    MOBILE / RESPONSIVE
