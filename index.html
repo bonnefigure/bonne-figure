@@ -243,10 +243,18 @@ projectLinks.forEach(function(link) {
         { bg: '#787369', aboutFr: 'black', aboutEn: '#45d7b3' },  // brun
         { bg: '#F2F200', aboutFr: 'black', aboutEn: '#787369' }   // jaune
     ];
-    
 
-    var randomTheme = colors[Math.floor(Math.random() * colors.length)];
-    
+    var savedThemeIndex = sessionStorage.getItem('themeIndex');
+    var themeIndex;
+
+    if (savedThemeIndex !== null) {
+        themeIndex = parseInt(savedThemeIndex, 10);
+    } else {
+        themeIndex = Math.floor(Math.random() * colors.length);
+        sessionStorage.setItem('themeIndex', themeIndex);
+    }
+
+    var randomTheme = colors[themeIndex];
 
     document.querySelector('.column.right').style.backgroundColor = randomTheme.bg;
     
@@ -271,6 +279,7 @@ projectLinks.forEach(function(link) {
     
     rebusElements.forEach(el => {
         el.addEventListener('click', () => {
+            sessionStorage.removeItem('themeIndex');
             window.location.href = '/';
         });
     });

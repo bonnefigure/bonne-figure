@@ -555,15 +555,6 @@ body.theme-jaune {
     --back-en-color: #787369;
 }
 
-body.a_propos_about .column.right {
-    display: block;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-body.a_propos_about .align-right {
-    margin-top: 0;
-}
 
 .content-wrapper > p:first-child {
     margin-top: 0;
@@ -600,6 +591,15 @@ body.a_propos_about .column.left {
 .footer-rebus .letter-gure,
 .footer-rebus .rebus-img {
     cursor: default;
+}
+
+body.a_propos_about .align-right {
+    position: fixed;
+    bottom: 0px;
+    right: 20px;
+    left: auto;
+    margin: 0;
+    z-index: 1000;
 }
 
 /* ======================================================

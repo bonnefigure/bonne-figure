@@ -40,11 +40,17 @@
 <nav>
     <a href="#" class="btn-next">suivant<span lang="en"> next</span></a>
 
-    <a href="../" class="btn-back">retour <span lang="en">back</span></a>
-
-    <a href="../" class="btn-back-fr">retour</a>
-
-    <a href="../" class="btn-back-en"><span lang="en">back</span></a>
+    <a href="../" 
+   onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); return false; }" 
+   class="btn-back">retour <span lang="en">back</span></a>
+       
+<a href="../" 
+   onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); return false; }" 
+   class="btn-back-fr">retour</a>
+       
+<a href="../" 
+   onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); return false; }" 
+   class="btn-back-en"><span lang="en">back</span></a>
 </nav>
     <main class="split">
         <section class="column left">
@@ -55,13 +61,18 @@
                 Visual identity for ENSAD Nancy's 2025 open day. A typographic flourish representing a thistle forms the basis of the identity. It is derived from Carol Twombly's revival of the Caslon typeface (1990). By distorting this ornament, we were able to create a fragmented graphic ecosystem. This symbol becomes the smallest unit of the system, which is used throughout the identity.
                 </span>
                 </p>
-            <p>
-                Nancy<br>
-                2025<br>
-                affiches <span lang="en">posters</span> 120&nbsp;×&nbsp;180&nbsp;cm, 29,7&nbsp;×&nbsp;42&nbsp;cm, 85&nbsp;×&nbsp;200&nbsp;cm<br>
-                vidéos <span lang="en">videos</span> 1080&nbsp;×&nbsp;1080&nbsp;px 20&nbsp;s, 1080&nbsp;×&nbsp;1920&nbsp;px 12&nbsp;s<br>
-                visuels médias sociaux <span lang="en">social media assets</span>
-            </p>
+    <div class="tech-columns">
+    <div class="tech-col">
+        ― Nancy<br>
+        ― 2025
+    </div>
+
+    <div class="tech-col">
+        ― affiches <span lang="en">posters</span> 120&nbsp;×&nbsp;180&nbsp;cm, 29,7&nbsp;×&nbsp;42&nbsp;cm, 85&nbsp;×&nbsp;200&nbsp;cm<br>
+        ― vidéos <span lang="en">videos</span> 1080&nbsp;×&nbsp;1080&nbsp;px 20&nbsp;s, 1080&nbsp;×&nbsp;1920&nbsp;px 12&nbsp;s<br>
+        ― visuels médias sociaux <span lang="en">social media assets</span><br>
+    </div>
+    </div>
         </section>
         <section class="column right">
             <img src="../images/chat-chardon-caslon/affiche1.jpeg" alt="Le Chat, le Chardon et la Caslon">
