@@ -195,17 +195,29 @@
 <script>
 var grid = document.querySelector('.masonry-grid');
 var scrollContainer = document.querySelector('.column.left');
-var currentScroll = 0;
+var scrollSaveTimer = null;
+
+function saveScrollNow() {
+    var pos = window.pageYOffset || scrollContainer.scrollTop || document.documentElement.scrollTop;
+    sessionStorage.setItem('scrollPosition', pos);
+}
 
 function trackScroll() {
-    currentScroll = window.pageYOffset || scrollContainer.scrollTop || document.documentElement.scrollTop;
+    if (scrollSaveTimer) return;
+    scrollSaveTimer = setTimeout(function () {
+        saveScrollNow();
+        scrollSaveTimer = null;
+    }, 100);
 }
 
 window.addEventListener('scroll', trackScroll, { passive: true });
 scrollContainer.addEventListener('scroll', trackScroll, { passive: true });
 
-window.addEventListener('pagehide', function () {
-    sessionStorage.setItem('scrollPosition', currentScroll);
+window.addEventListener('pagehide', saveScrollNow);
+window.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') {
+        saveScrollNow();
+    }
 });
 
 imagesLoaded(grid, function() {
