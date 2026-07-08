@@ -213,11 +213,19 @@ imagesLoaded(grid, function() {
     if (savedScroll !== null) {
         savedScroll = parseInt(savedScroll, 10);
 
-        requestAnimationFrame(function () {
+        var attempts = 0;
+        var maxAttempts = 20;
+
+        var restoreScroll = setInterval(function () {
             window.scrollTo(0, savedScroll);
             scrollContainer.scrollTop = savedScroll;
-            sessionStorage.removeItem('scrollPosition');
-        });
+
+            attempts++;
+            if (attempts >= maxAttempts) {
+                clearInterval(restoreScroll);
+                sessionStorage.removeItem('scrollPosition');
+            }
+        }, 50);
     }
 });
 
