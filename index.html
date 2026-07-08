@@ -220,39 +220,30 @@ window.addEventListener('visibilitychange', function () {
     }
 });
 
-// Fonction pour restaurer le scroll (séparée pour pouvoir l'appeler dans les deux cas)
-function restoreScrollPosition() {
+imagesLoaded(grid, function() {
+
+    new Masonry(grid, {
+        itemSelector: '.masonry-item',
+        columnWidth: '.masonry-item',
+        percentPosition: true,
+        gutter: 0,
+        horizontalOrder: true
+    });
+
+    grid.style.opacity = '1';
+
     var savedScroll = sessionStorage.getItem('scrollPosition');
+
     if (savedScroll !== null) {
         savedScroll = parseInt(savedScroll, 10);
+
         requestAnimationFrame(function () {
             window.scrollTo(0, savedScroll);
             scrollContainer.scrollTop = savedScroll;
             sessionStorage.removeItem('scrollPosition');
         });
     }
-}
-
-// --- LA CONDITION MOBILE / DESKTOP EST ICI ---
-if (window.matchMedia("(max-width: 768px)").matches) {
-    // 1. SUR MOBILE : On ignore Masonry, on affiche tout de suite et on remet le scroll
-    grid.style.opacity = '1';
-    restoreScrollPosition();
-} else {
-    // 2. SUR DESKTOP : On attend que les images chargent, puis on lance Masonry
-    imagesLoaded(grid, function() {
-        new Masonry(grid, {
-            itemSelector: '.masonry-item',
-            columnWidth: '.masonry-item',
-            percentPosition: true,
-            gutter: 0,
-            horizontalOrder: true
-        });
-
-        grid.style.opacity = '1';
-        restoreScrollPosition();
-    });
-}
+});
 </script>
 <script>
 
