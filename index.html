@@ -195,7 +195,6 @@
 <script>
 var grid = document.querySelector('.masonry-grid');
 var scrollContainer = document.querySelector('.column.left');
-var isMobile = window.innerWidth <= 768;
 
 imagesLoaded(grid, function() {
 
@@ -215,12 +214,8 @@ imagesLoaded(grid, function() {
         savedScroll = parseInt(savedScroll, 10);
 
         requestAnimationFrame(function () {
-            if (isMobile) {
-                window.scrollTo(0, savedScroll);
-            } else {
-                scrollContainer.scrollTop = savedScroll;
-            }
-
+            window.scrollTo(0, savedScroll);
+            scrollContainer.scrollTop = savedScroll;
             sessionStorage.removeItem('scrollPosition');
         });
     }
@@ -230,7 +225,7 @@ var projectLinks = document.querySelectorAll('.masonry-item a');
 
 projectLinks.forEach(function(link) {
     link.addEventListener('click', function() {
-        var currentScroll = isMobile ? window.pageYOffset : scrollContainer.scrollTop;
+        var currentScroll = window.pageYOffset || scrollContainer.scrollTop;
         sessionStorage.setItem('scrollPosition', currentScroll);
     });
 });
