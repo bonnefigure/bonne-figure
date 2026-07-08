@@ -175,7 +175,7 @@
         </section>
     </main>
 
-<!--<a href="/pale-figure/" class="footer-rebus">
+<div class="footer-rebus">
     <div class="footer-left">
         <span class="letter-le">le</span>
         <img src="images/pas.png" alt="pas" class="rebus-img pas">
@@ -184,8 +184,8 @@
     <div class="footer-right">
         <img src="images/fi.png" alt="fi" class="rebus-img fi">
         <span class="letter-gure">gure</span>
-    </div>-->
-</a>
+    </div>
+</div>
 
 
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
@@ -275,6 +275,15 @@ projectLinks.forEach(function(link) {
         });
     });
 </script>
+<script>const paleFigureElements = document.querySelectorAll(
+    '.footer-rebus .letter-le, .footer-rebus .letter-gure, .footer-rebus .rebus-img'
+);
+
+paleFigureElements.forEach(el => {
+    el.addEventListener('click', () => {
+        window.location.href = '/pale-figure/';
+    });
+});</script>
 <script data-goatcounter="https://etesecret.goatcounter.com/count"
         async src="//gc.zgo.at/count.js">
 </script>

@@ -580,6 +580,24 @@ body.a_propos_about .column.left {
     margin-bottom: 20.8px;
 }
 
+.nowrap {
+    white-space: nowrap;
+}
+
+.footer-rebus{
+    pointer-events:none;
+}
+
+.footer-rebus .letter-le,
+.footer-rebus .letter-gure,
+.footer-rebus .rebus-img{
+    pointer-events:auto;
+    cursor:pointer;
+}
+
+/*temporaire pale figure :*/
+
+
 /* ======================================================
    MOBILE / RESPONSIVE
 ====================================================== */
