@@ -145,6 +145,7 @@ a {
     white-space: nowrap !important;
     border: 0 !important;
 }
+
 /* ======================================================
    MASONRY GRID (INDEX)
 ====================================================== */
@@ -395,6 +396,65 @@ a {
     cursor: pointer;
 }
 
+.footer-rebus{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:20px;
+    display:flex;
+    z-index:1001;
+    text-decoration:none;
+    color:inherit;
+}
+
+.footer-left,
+.footer-right{
+    width:50%;
+    position:relative;
+    pointer-events:none;
+}
+
+.footer-left,
+.footer-right{
+    width:50%;
+    position:relative;
+    padding:0 20px;
+}
+
+.footer-left{
+    text-align:right;
+}
+
+.footer-right{
+    text-align:left;
+}
+
+.letter-le{
+    display:inline-block;
+    position:relative;
+    margin-right:0px;   /* comme le b */
+}
+
+.letter-gure{
+    display:inline-block;
+    position:relative;
+    margin-left:19px;    /* comme ure */
+}
+
+.pas{
+    position:absolute;
+    right:38px;
+    bottom:3px;
+    height:22px;
+}
+
+.fi{
+    position:absolute;
+    left:20px;
+    bottom:1px;
+    height:24px;
+}
+
 /* ======================================================
    FOOTER FIXE
 ====================================================== */
@@ -513,6 +573,13 @@ body.a_propos_about .column.left {
     padding-top: 65px;
 }
 
+.tech-columns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 20.8px;
+}
+
 /* ======================================================
    MOBILE / RESPONSIVE
 ====================================================== */
@@ -575,7 +642,7 @@ body.a_propos_about .column.left {
         pointer-events: auto; 
     }
 
-    .btn-about-fr, .btn-about-en, .btn-back-fr, .btn-back-en {
+    .btn-back-fr, .btn-back-en {
         position: fixed;
         bottom: calc(10px + env(safe-area-inset-bottom, 0px)) !important;
         top: auto !important;
@@ -589,6 +656,27 @@ body.a_propos_about .column.left {
     body.a_propos_about .align-right {
         position: static;
     }
+
+    /* Colonnes techniques : empilées normalement sur mobile */
+    .tech-columns {
+    display: block;
+    }
+
+    .tech-col {
+    margin-bottom: 0;
+    }
+
+    /* Colonnes techniques : empilées normalement sur mobile */
+.tech-columns {
+    display: block;
+}
+
+.tech-col {
+    margin: 0;
+    padding: 0;
+}
+
+
 
     
     /* ------------------------------------------------
@@ -701,33 +789,33 @@ body.a_propos_about .column.left {
     /* ------------------------------------------------
        BOUTONS - INDEX
     ------------------------------------------------ */
-    .btn-about,
-    .btn-next {
-        display: none !important;
-    }
+.btn-about,
+.btn-next {
+    display: none !important;
+}
 
-    .btn-about-fr,
-    .btn-about-en {
+.btn-about-fr,
+.btn-about-en {
     display: block !important;
     position: fixed;
-    bottom: 10px;
-    top: auto;
-    transform: none;
+    top: 50%;
+    bottom: auto;
+    transform: translateY(-50%);
     z-index: 1001;
     pointer-events: auto;
     text-decoration: none;
     font-size: 1em;
-    }
+}
 
-    .btn-about-fr {
+.btn-about-fr {
     left: 10px;
     color: black;
-    }
+}
 
-    .btn-about-en {
+.btn-about-en {
     right: 10px;
     color: #787369;
-    }
+}
 
     /* Forcer la couleur du span [lang="en"] */
     .btn-about-en [lang="en"] {
@@ -833,6 +921,60 @@ body.a_propos_about .column.left {
     .masonry-item .project-title {
         font-size: 1em;
     }
+
+    body.index .footer-rebus{
+    display: flex;
+}
+
+.footer-left,
+.footer-right{
+    width: 50%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.footer-left{
+    justify-content: flex-end;
+}
+
+.footer-right{
+    justify-content: flex-end;
+}
+
+    body.index .footer-rebus{
+    display:absolute;
+    bottom:10px;
+    }
+
+    .footer-left{
+    padding-right:20px;
+    }
+
+.footer-right{
+    padding-left:0px;
+    padding-right:10px
+}
+
+.letter-le{
+    margin-right:110px;
+}
+
+.letter-gure{
+    margin-left:0px;
+}
+
+.pas{
+    height:20px;
+    bottom:4px;
+    right:149px;
+}
+
+.fi{
+    height:22px;
+    bottom:1px;
+    left:118px;
+}
+
     
     /* ------------------------------------------------
        PAGES PROJET MOBILE
@@ -936,12 +1078,10 @@ body.a_propos_about .align-right {
         padding-top: calc(10px + env(safe-area-inset-top, 0px));
     }
     
-    body:not(.index) .btn-back-fr,
-    body:not(.index) .btn-back-en,
-    body.index .btn-about-fr,
-    body.index .btn-about-en {
-        bottom: calc(10px + env(safe-area-inset-bottom, 0px));
-    }
+body:not(.index) .btn-back-fr,
+body:not(.index) .btn-back-en {
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+}
 }
 
 }

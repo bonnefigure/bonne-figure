@@ -17,8 +17,8 @@ body {
 .pale-figure .column { width: 50%; overflow-y: auto; padding: 20px; scrollbar-width: none; }
 .pale-figure .column::-webkit-scrollbar { display: none; }
 
-.pale-figure .column.left { padding-top: 20px; padding-bottom: 60px; }
-.pale-figure .column.right { background: white; padding-top: 20px; padding-bottom: 80px; }
+.pale-figure .column.left { padding-top: 20px; padding-bottom: 40px; }
+.pale-figure .column.right { background: white; padding-top: 20px; padding-bottom: 45px; }
 
 .pale-figure .gallery-image { display: block; margin-bottom: 20px; cursor: pointer; }
 .pale-figure .gallery-image.xl { width: 100%; }
@@ -33,8 +33,8 @@ body {
     position: fixed; bottom: 20px; left: 0; right: 0;
     display: flex; z-index: 1000; pointer-events: none;
 }
-.pale-figure .header-left { width: 50%; text-align: right; padding-right: 30px; }
-.pale-figure .header-right { width: 50%; text-align: left; padding-left: 30px; }
+.pale-figure .header-left { width: 50%; text-align: right; padding-right: 20px; }
+.pale-figure .header-right { width: 50%; text-align: left; padding-left: 20px; }
 
 .pale-figure .btn-back-bottom {
     position: fixed; bottom: 20px; left: 20px;
@@ -94,7 +94,10 @@ html, body {
     width: 100%;
     height: auto;
     display: block;
-    margin-bottom: 1.5em 0;
+}
+
+.column.right .text-content img {
+    margin-bottom: 20px;
 }
 
 @media (max-width: 768px) {
@@ -159,9 +162,17 @@ html, body {
         overflow: visible !important;
     }
 
+    body.pale-figure .column.left {
+    order: 2;
+}
+
+body.pale-figure .column.right {
+    order: 1;
+}
+
     body.pale-figure .split { 
         display: flex !important;
-        flex-direction: column-reverse !important;
+        flex-direction: column !important;
         height: auto !important;
         min-height: 100vh;
     }
