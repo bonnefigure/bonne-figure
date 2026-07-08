@@ -145,7 +145,7 @@ html, body {
 
     html.is-chrome-ios body.pale-figure .split{
         display: flex !important;
-        flex-direction: column-reverse !important;
+        flex-direction: column !important;
         height: 100dvh !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch;
