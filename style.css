@@ -699,6 +699,14 @@ body.a_propos_about .align-right {
 }
 
 
+    .tech-columns .tech-col {
+        margin-bottom: 1lh; /* Exactement l'espace d'une ligne de texte */
+    }
+
+    .tech-columns .tech-col:last-child {
+        margin-bottom: 0;
+    }
+
 
     
     /* ------------------------------------------------
