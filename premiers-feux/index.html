@@ -109,31 +109,35 @@
 <script src="../next-project.js"></script>
 <script>
 (function() {
-    // 1. On récupère toutes les images de la colonne de droite
     var images = Array.from(document.querySelectorAll('.column.right img'));
     if (images.length === 0) return;
 
-    // 2. On mémorise leurs vraies adresses et on vide leur "src" pour stopper le chargement simultané
-    var sources = images.map(function(img) {
-        var src = img.src;
-        img.removeAttribute('src'); // Stoppe le téléchargement automatique du navigateur
-        return src;
+    var sources = [];
+    var alts = [];
+
+    // 1. On sauvegarde le src ET le alt, puis on les retire pour éviter l'affichage du texte
+    images.forEach(function(img) {
+        sources.push(img.src);
+        alts.push(img.alt);
+        
+        img.removeAttribute('src');
+        img.removeAttribute('alt'); // Empêche le navigateur d'afficher le texte pendant le chargement
     });
 
-    // 3. Fonction pour charger les images une par une, dans l'ordre exact
+    // 2. Chargement séquentiel une par une
     function loadNext(index) {
-        if (index >= images.length) return; // Fin de la liste
+        if (index >= images.length) return;
 
         var img = images[index];
 
         img.onload = img.onerror = function() {
-            loadNext(index + 1); // Quand cette image est chargée, on passe à la suivante
+            img.alt = alts[index]; // On remet le bon texte alt dès que l'image est affichée (accessible)
+            loadNext(index + 1);   // On passe à l'image suivante
         };
 
-        img.src = sources[index]; // On réinjecte l'adresse pour lancer le téléchargement de CETTE image
+        img.src = sources[index];  // Lance le téléchargement de cette image
     }
 
-    // 4. On lance la première image
     loadNext(0);
 })();
 </script>
