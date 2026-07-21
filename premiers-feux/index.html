@@ -107,5 +107,35 @@
   }
 </script>
 <script src="../next-project.js"></script>
+<script>
+(function() {
+    // 1. On récupère toutes les images de la colonne de droite
+    var images = Array.from(document.querySelectorAll('.column.right img'));
+    if (images.length === 0) return;
+
+    // 2. On mémorise leurs vraies adresses et on vide leur "src" pour stopper le chargement simultané
+    var sources = images.map(function(img) {
+        var src = img.src;
+        img.removeAttribute('src'); // Stoppe le téléchargement automatique du navigateur
+        return src;
+    });
+
+    // 3. Fonction pour charger les images une par une, dans l'ordre exact
+    function loadNext(index) {
+        if (index >= images.length) return; // Fin de la liste
+
+        var img = images[index];
+
+        img.onload = img.onerror = function() {
+            loadNext(index + 1); // Quand cette image est chargée, on passe à la suivante
+        };
+
+        img.src = sources[index]; // On réinjecte l'adresse pour lancer le téléchargement de CETTE image
+    }
+
+    // 4. On lance la première image
+    loadNext(0);
+})();
+</script>
 </body>
 </html>
