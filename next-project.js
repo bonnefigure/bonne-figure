@@ -25,8 +25,8 @@
 
     var nextSlug = order[(idx + 1) % order.length];
 
-    var btn = document.querySelector('.btn-next');
-    if (btn) {
+    var btns = document.querySelectorAll('.btn-next');
+    btns.forEach(function (btn) {
         btn.setAttribute('href', '../' + nextSlug + '/');
-    }
+    });
 })();

@@ -325,7 +325,9 @@ a {
 .btn-about-fr,
 .btn-about-en,
 .btn-back-fr,
-.btn-back-en {
+.btn-back-en,
+.btn-next-fr,
+.btn-next-en  {
     display: none;
 }
 
@@ -884,8 +886,9 @@ body.a_propos_about .align-right {
         display: none !important;
     }
     
-    body:not(.index) .btn-back-fr,
-    body:not(.index) .btn-back-en {
+   /* Page à propos mobile : le bouton retour reste tel quel */
+    body.a_propos_about .btn-back-fr,
+    body.a_propos_about .btn-back-en {
     display: block !important;
     position: fixed;
     bottom: 10px;
@@ -897,22 +900,56 @@ body.a_propos_about .align-right {
     font-size: 1em;
     }
 
-    body:not(.index) .btn-back-fr {
+    body.a_propos_about .btn-back-fr {
     left: 10px;
     color: var(--back-color, black);
     }
 
-    body:not(.index) .btn-back-en {
+    body.a_propos_about .btn-back-en {
     right: 10px;
     color: var(--back-en-color, #787369); 
     }
 
-    body:not(.index) .btn-back-en [lang="en"] {
+    body.a_propos_about .btn-back-en [lang="en"] {
     color: inherit;
     }
 
-    body:not(.index) .btn-back-fr:hover,
-    body:not(.index) .btn-back-en:hover {
+    body.a_propos_about .btn-back-fr:hover,
+    body.a_propos_about .btn-back-en:hover {
+    text-decoration: underline;
+    text-decoration-color: currentColor;
+    }
+
+    /* Pages projet mobile (hors à propos) : bouton "suivant" à la place de "retour" */
+    body:not(.index):not(.a_propos_about) .btn-next-fr,
+    body:not(.index):not(.a_propos_about) .btn-next-en {
+    display: block !important;
+    position: fixed;
+    bottom: 10px;
+    top: auto;
+    transform: none;
+    z-index: 1001;
+    pointer-events: auto;
+    text-decoration: none;
+    font-size: 1em;
+    }
+
+    body:not(.index):not(.a_propos_about) .btn-next-fr {
+    left: 10px;
+    color: var(--about-color, black);
+    }
+
+    body:not(.index):not(.a_propos_about) .btn-next-en {
+    right: 10px;
+    color: var(--about-en-color, #787369); 
+    }
+
+    body:not(.index):not(.a_propos_about) .btn-next-en [lang="en"] {
+    color: inherit;
+    }
+
+    body:not(.index):not(.a_propos_about) .btn-next-fr:hover,
+    body:not(.index):not(.a_propos_about) .btn-next-en:hover {
     text-decoration: underline;
     text-decoration-color: currentColor;
     }
@@ -1108,8 +1145,13 @@ body.a_propos_about .align-right {
         padding-top: calc(10px + env(safe-area-inset-top, 0px));
     }
     
-body:not(.index) .btn-back-fr,
-body:not(.index) .btn-back-en {
+body.a_propos_about .btn-back-fr,
+body.a_propos_about .btn-back-en {
+    bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+}
+
+body:not(.index):not(.a_propos_about) .btn-next-fr,
+body:not(.index):not(.a_propos_about) .btn-next-en {
     bottom: calc(10px + env(safe-area-inset-bottom, 0px));
 }
 }
