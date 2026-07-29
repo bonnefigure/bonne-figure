@@ -17,9 +17,12 @@ document.querySelectorAll('.header-left, .header-right').forEach(function(link) 
     link.addEventListener('click', function(e) {
 
         if (sessionStorage.getItem('cameFromIndex') === 'true') {
+
             e.preventDefault();
+
             sessionStorage.removeItem('cameFromIndex');
-            window.history.go(-1);
+            window.history.back();
+
         }
 
     });
