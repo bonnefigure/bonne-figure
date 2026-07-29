@@ -12,3 +12,15 @@ document.querySelectorAll('.btn-back, .btn-back-fr, .btn-back-en').forEach(funct
         // et chargera ton Index tout en lisant ton sessionStorage pour le scroll.
     });
 });
+
+document.querySelectorAll('.header-left, .header-right').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+
+        if (sessionStorage.getItem('cameFromIndex') === 'true') {
+            e.preventDefault();
+            sessionStorage.removeItem('cameFromIndex');
+            window.history.go(-1);
+        }
+
+    });
+});
