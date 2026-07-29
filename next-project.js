@@ -25,11 +25,13 @@
 
     var nextSlug = order[(idx + 1) % order.length];
 
-    btns.forEach(function (btn) {
-    btn.setAttribute('href', '../' + nextSlug + '/');
+    var btns = document.querySelectorAll('.btn-next');
 
-    btn.addEventListener('click', function () {
-        sessionStorage.removeItem('cameFromIndex');
+    btns.forEach(function (btn) {
+        btn.setAttribute('href', '../' + nextSlug + '/');
+
+        btn.addEventListener('click', function () {
+            sessionStorage.removeItem('cameFromIndex');
+        });
     });
-});
 })();
