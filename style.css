@@ -224,8 +224,7 @@ a {
     padding: 20px 20px 0 20px;
     background: transparent;
     position: relative;
-    
-
+    text-decoration: none;
     pointer-events: none; 
 }
 
@@ -954,6 +953,21 @@ body.a_propos_about .align-right {
     text-decoration-color: currentColor;
     }
     
+    /* Logo "bonne"/"figure" = lien retour accueil, pages projet mobile (hors à propos) */
+    body:not(.index):not(.a_propos_about) .header-left {
+        color: var(--back-color, black);
+    }
+
+    body:not(.index):not(.a_propos_about) .header-right {
+        color: var(--back-color, black);
+    }
+
+    body:not(.index):not(.a_propos_about) .header-left:hover,
+    body:not(.index):not(.a_propos_about) .header-right:hover {
+        text-decoration: underline;
+        text-decoration-color: currentColor;
+    }
+
     /* ------------------------------------------------
        INDEX MOBILE
     ------------------------------------------------ */
