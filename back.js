@@ -12,22 +12,8 @@ document.querySelectorAll('.btn-back, .btn-back-fr, .btn-back-en, .header-left, 
 
         e.preventDefault();
 
-        var ref = document.referrer;
-
-        // Si on revient d'une page index :
-        // on utilise l'historique (instantané)
-        if (ref === window.location.origin + '/' ||
-            ref === window.location.origin) {
-
-            window.history.back();
-            return;
-        }
-
-
-        // Si on vient d'un projet :
-        // on retourne directement à l'index.
-        // La position sera restaurée par sessionStorage.
-        window.location.href = '../';
+        var depth = parseInt(sessionStorage.getItem('projectDepth') || '1', 10);
+        window.history.go(-depth);
     });
 
 });
