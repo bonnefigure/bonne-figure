@@ -33,8 +33,13 @@
 <body class="bring_the_outdoors_in theme-black">
     <header class="site-header">
 <h1>
-    <a href="../" class="header-left">bonne</a>
-    <a href="../" class="header-right">figure</a>
+<a href="../"
+   onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); return false; }"
+   class="header-left">bonne</a>
+
+<a href="../"
+   onclick="if(document.referrer.includes(window.location.hostname)){ history.back(); return false; }"
+   class="header-right">figure</a>
 </h1>
     </header>
     <nav>

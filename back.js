@@ -12,3 +12,14 @@ document.querySelectorAll('.btn-back, .btn-back-fr, .btn-back-en').forEach(funct
         // et chargera ton Index tout en lisant ton sessionStorage pour le scroll.
     });
 });
+
+document.querySelectorAll('.header-left, .header-right').forEach(function(link) {
+    link.addEventListener('click', function(e) {
+        if (window.matchMedia("(max-width: 768px)").matches) {
+            if (document.referrer.includes(window.location.hostname)) {
+                e.preventDefault();
+                window.history.back();
+            }
+        }
+    });
+});
