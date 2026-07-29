@@ -1,29 +1,33 @@
-document.querySelectorAll('.btn-back, .btn-back-fr, .btn-back-en').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
-        // 1. On vérifie qu'on est sur mobile (écran < 768px)
-        if (window.matchMedia("(max-width: 768px)").matches) {
-            // 2. On vérifie que l'utilisateur vient bien d'une page de ton site
-            if (document.referrer.includes(window.location.hostname)) {
-                e.preventDefault(); // On annule le lien normal
-                window.history.back(); // On utilise le BFCache instantané
-            }
-        }
-        // Sur desktop, le script ne fait rien : le lien <a href="/"> fonctionnera normalement
-        // et chargera ton Index tout en lisant ton sessionStorage pour le scroll.
-    });
-});
+document.querySelectorAll('.btn-back, .btn-back-fr, .btn-back-en, .header-left, .header-right').forEach(function(link) {
 
-document.querySelectorAll('.header-left, .header-right').forEach(function(link) {
     link.addEventListener('click', function(e) {
 
-        if (sessionStorage.getItem('cameFromIndex') === 'true') {
-
-            e.preventDefault();
-
-            sessionStorage.removeItem('cameFromIndex');
-            window.history.back();
-
+        if (!window.matchMedia("(max-width: 768px)").matches) {
+            return;
         }
 
+        if (!document.referrer.includes(window.location.hostname)) {
+            return;
+        }
+
+        e.preventDefault();
+
+        var ref = document.referrer;
+
+        // Si on revient d'une page index :
+        // on utilise l'historique (instantané)
+        if (ref === window.location.origin + '/' ||
+            ref === window.location.origin) {
+
+            window.history.back();
+            return;
+        }
+
+
+        // Si on vient d'un projet :
+        // on retourne directement à l'index.
+        // La position sera restaurée par sessionStorage.
+        window.location.href = '../';
     });
+
 });
