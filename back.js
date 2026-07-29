@@ -12,7 +12,7 @@ document.querySelectorAll('.btn-back, .btn-back-fr, .btn-back-en, .header-left, 
 
         e.preventDefault();
 
-        window.location.href = '../';
+        window.history.back();
     });
 
 });

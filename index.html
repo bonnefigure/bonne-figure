@@ -197,6 +197,11 @@ var grid = document.querySelector('.masonry-grid');
 var scrollContainer = document.querySelector('.column.left');
 var scrollSaveTimer = null;
 
+// empêche le navigateur de tenter sa propre restauration de scroll, qui rentre en conflit avec la nôtre
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
 function saveScrollNow() {
     var pos = window.pageYOffset || scrollContainer.scrollTop || document.documentElement.scrollTop;
     sessionStorage.setItem('scrollPosition', pos);
@@ -227,6 +232,14 @@ window.addEventListener('visibilitychange', function () {
     }
 });
 
+var savedScroll = sessionStorage.getItem('scrollPosition');
+if (savedScroll !== null) {
+    savedScroll = parseInt(savedScroll, 10);
+    // positionnement immédiat, avant tout affichage visible de la grille
+    window.scrollTo(0, savedScroll);
+    scrollContainer.scrollTop = savedScroll;
+}
+
 imagesLoaded(grid, function() {
 
     new Masonry(grid, {
@@ -237,13 +250,7 @@ imagesLoaded(grid, function() {
         horizontalOrder: true
     });
 
-    grid.style.opacity = '1';
-
-    var savedScroll = sessionStorage.getItem('scrollPosition');
-
     if (savedScroll !== null) {
-        savedScroll = parseInt(savedScroll, 10);
-
         var attempts = 0;
         var maxAttempts = 60; // ~3s max à 50ms d'intervalle
 
@@ -255,13 +262,18 @@ imagesLoaded(grid, function() {
                 document.documentElement.scrollHeight
             ) - window.innerHeight;
 
+            // on réaffirme le scroll à chaque tick, tant que la grille est encore invisible
+            window.scrollTo(0, savedScroll);
+            scrollContainer.scrollTop = savedScroll;
+
             if (maxScroll >= savedScroll || attempts >= maxAttempts) {
-                window.scrollTo(0, savedScroll);
-                scrollContainer.scrollTop = savedScroll;
                 clearInterval(poll);
                 sessionStorage.removeItem('scrollPosition');
+                grid.style.opacity = '1'; // révélée seulement maintenant, déjà à la bonne position
             }
         }, 50);
+    } else {
+        grid.style.opacity = '1';
     }
 });
 </script>

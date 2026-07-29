@@ -24,9 +24,14 @@
     if (idx === -1) return;
 
     var nextSlug = order[(idx + 1) % order.length];
+    var nextUrl = '../' + nextSlug + '/';
 
     var btns = document.querySelectorAll('.btn-next');
     btns.forEach(function (btn) {
-        btn.setAttribute('href', '../' + nextSlug + '/');
+        btn.setAttribute('href', nextUrl); // fallback si JS ne se charge pas
+        btn.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.location.replace(nextUrl);
+        });
     });
 })();
