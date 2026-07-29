@@ -25,8 +25,11 @@
 
     var nextSlug = order[(idx + 1) % order.length];
 
-    var btns = document.querySelectorAll('.btn-next');
     btns.forEach(function (btn) {
-        btn.setAttribute('href', '../' + nextSlug + '/');
+    btn.setAttribute('href', '../' + nextSlug + '/');
+
+    btn.addEventListener('click', function () {
+        sessionStorage.removeItem('cameFromIndex');
     });
+});
 })();
