@@ -12,8 +12,7 @@ document.querySelectorAll('.btn-back, .btn-back-fr, .btn-back-en, .header-left, 
 
         e.preventDefault();
 
-        var depth = parseInt(sessionStorage.getItem('projectDepth') || '1', 10);
-        window.history.go(-depth);
+        window.location.href = '../';
     });
 
 });

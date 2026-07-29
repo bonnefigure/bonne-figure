@@ -28,10 +28,5 @@
     var btns = document.querySelectorAll('.btn-next');
     btns.forEach(function (btn) {
         btn.setAttribute('href', '../' + nextSlug + '/');
-        // ajouté : incrémente la profondeur à chaque clic "suivant"
-        btn.addEventListener('click', function () {
-            var depth = parseInt(sessionStorage.getItem('projectDepth') || '1', 10);
-            sessionStorage.setItem('projectDepth', String(depth + 1));
-        });
     });
 })();

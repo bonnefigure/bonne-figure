@@ -217,7 +217,6 @@ document.querySelectorAll('.masonry-item a').forEach(function(link) {
     link.addEventListener('click', function() {
         saveScrollNow();
         sessionStorage.setItem('cameFromIndex', 'true');
-        sessionStorage.setItem('projectDepth', '1');
     });
 });
 
@@ -242,21 +241,28 @@ imagesLoaded(grid, function() {
 
     var savedScroll = sessionStorage.getItem('scrollPosition');
 
-if (savedScroll !== null) {
-    savedScroll = parseInt(savedScroll, 10);
+    if (savedScroll !== null) {
+        savedScroll = parseInt(savedScroll, 10);
 
-    setTimeout(function () {
-        window.scrollTo(0, savedScroll);
-        scrollContainer.scrollTop = savedScroll;
+        var attempts = 0;
+        var maxAttempts = 60; // ~3s max à 50ms d'intervalle
 
-        setTimeout(function () {
-            window.scrollTo(0, savedScroll);
-            scrollContainer.scrollTop = savedScroll;
-            sessionStorage.removeItem('scrollPosition');
-        }, 300);
+        var poll = setInterval(function () {
+            attempts++;
 
-    }, 100);
-}
+            var maxScroll = Math.max(
+                document.body.scrollHeight,
+                document.documentElement.scrollHeight
+            ) - window.innerHeight;
+
+            if (maxScroll >= savedScroll || attempts >= maxAttempts) {
+                window.scrollTo(0, savedScroll);
+                scrollContainer.scrollTop = savedScroll;
+                clearInterval(poll);
+                sessionStorage.removeItem('scrollPosition');
+            }
+        }, 50);
+    }
 });
 </script>
 <script>
