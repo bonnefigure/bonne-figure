@@ -241,15 +241,21 @@ imagesLoaded(grid, function() {
 
     var savedScroll = sessionStorage.getItem('scrollPosition');
 
-    if (savedScroll !== null) {
-        savedScroll = parseInt(savedScroll, 10);
+if (savedScroll !== null) {
+    savedScroll = parseInt(savedScroll, 10);
 
-        requestAnimationFrame(function () {
+    setTimeout(function () {
+        window.scrollTo(0, savedScroll);
+        scrollContainer.scrollTop = savedScroll;
+
+        setTimeout(function () {
             window.scrollTo(0, savedScroll);
             scrollContainer.scrollTop = savedScroll;
             sessionStorage.removeItem('scrollPosition');
-        });
-    }
+        }, 300);
+
+    }, 100);
+}
 });
 </script>
 <script>
