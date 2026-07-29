@@ -2,10 +2,6 @@ document.querySelectorAll('.btn-back, .btn-back-fr, .btn-back-en, .header-left, 
 
     link.addEventListener('click', function(e) {
 
-        if (!window.matchMedia("(max-width: 768px)").matches) {
-            return;
-        }
-
         if (!document.referrer.includes(window.location.hostname)) {
             return;
         }
