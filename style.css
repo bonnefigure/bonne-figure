@@ -89,6 +89,14 @@ body::-webkit-scrollbar {
     margin-right: auto;
 }
 
+.one-third {
+    width: 33.333%;
+    display: block;
+    margin-top: 0px ;
+    margin-left: 0;
+    margin-right: auto;
+}
+
 p {
     hyphens: none;
 }
