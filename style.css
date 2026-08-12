@@ -166,20 +166,17 @@ a {
     width: 100%;
 }
 
+.masonry-grid {
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
 .masonry-item {
     width: 33.333%;
     margin-bottom: 20px;
     box-sizing: border-box;
     padding-left: 10px;
     padding-right: 10px;
-}
-
-.masonry-item:nth-child(3n+1) {
-    padding-left: 0;  
-}
-
-.masonry-item:nth-child(3n) {
-    padding-right: 0; 
 }
 
 .masonry-item a {
@@ -485,6 +482,63 @@ a {
 }
 
 /* ======================================================
+   IMAGE VIEWER
+====================================================== */
+.image-viewer-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    padding: 20px;
+    padding-top: 20px;
+    box-sizing: border-box;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-viewer-overlay.active {
+    display: flex;
+}
+
+.image-viewer-overlay img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+/* masque le header ET la nav de la page pendant que la visionneuse est ouverte */
+body.viewer-open .site-header,
+body.viewer-open nav {
+    display: none;
+}
+
+.viewer-back,
+.viewer-next {
+    position: fixed;
+    top: 20px;
+    z-index: 1002; /* au-dessus de tout, par sécurité */
+    text-decoration: none;
+    color: var(--back-color, black);
+    cursor: pointer;
+}
+
+.viewer-back {
+    left: 20px;
+}
+
+.viewer-next {
+    right: 20px;
+}
+
+.viewer-back:hover,
+.viewer-next:hover {
+    text-decoration: underline;
+}
+
+/* ======================================================
    VARIABLES PAR PAGE / PROJET
 ====================================================== */
 /* Index */
@@ -715,7 +769,10 @@ body.a_propos_about .align-right {
     .tech-columns .tech-col:last-child {
         margin-bottom: 0;
     }
-
+.masonry-grid {
+    margin-left: 0;
+    margin-right: 0;
+}
 
     
     /* ------------------------------------------------
