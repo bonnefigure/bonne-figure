@@ -1,5 +1,6 @@
 (function () {
     var order = [
+        'plouv-ara',
         'premiers-feux',
         'ccam',
         'i-want-to',
