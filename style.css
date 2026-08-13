@@ -1162,7 +1162,7 @@ body.a_propos_about .align-right {
     }
     
     /* Images pleine largeur */
-    .two-thirds
+    .two-thirds,
     .one-third {
         width: 100%;
     }
