@@ -547,7 +547,7 @@ body.viewer-open nav {
     transform: translate(-50%, -50%);
     pointer-events: none;
     color: var(--text-en-color, #45d7b3);
-    font-size: 1.5em;
+    font-size: 2.5em;
     font-family: "Sorts Mill Goudy", serif;
 }
 
@@ -566,7 +566,7 @@ body.viewer-open nav {
     width: 1em;
     height: 1em;
 
-    font-size: 1.5em;
+    font-size: 1.75em;
     line-height: 1;
 
     color: var(--text-en-color,);

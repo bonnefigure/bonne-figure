@@ -179,7 +179,7 @@
         cursorFollower.style.top = e.clientY + 'px';
 
         cursorFollower.textContent =
-            e.clientX < window.innerWidth / 2 ? '<' : '>';
+            e.clientX < window.innerWidth / 2 ? '‹' : '›';
 
     });
 
