@@ -482,18 +482,20 @@ a {
 }
 
 /* ======================================================
-   IMAGE VIEWER
+   IMAGE VIEWER (desktop uniquement)
 ====================================================== */
 .image-viewer-overlay {
     position: fixed;
     inset: 0;
     z-index: 1000;
     padding: 20px;
-    padding-top: 20px;
     box-sizing: border-box;
     display: none;
     align-items: center;
     justify-content: center;
+    cursor: none; /* le curseur natif est masqué, remplacé par .viewer-cursor */
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .image-viewer-overlay.active {
@@ -507,6 +509,30 @@ a {
     height: auto;
     object-fit: contain;
     display: block;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.image-viewer-overlay video {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: none;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.image-viewer-overlay iframe {
+    width: 75%;
+    height: 75%;
+    max-width: 100%;
+    max-height: 100%;
+    border: none;
+    display: none;
 }
 
 /* masque le header ET la nav de la page pendant que la visionneuse est ouverte */
@@ -515,27 +541,45 @@ body.viewer-open nav {
     display: none;
 }
 
-.viewer-back,
-.viewer-next {
+.viewer-cursor {
     position: fixed;
-    top: 20px;
-    z-index: 1002; /* au-dessus de tout, par sécurité */
-    text-decoration: none;
-    color: var(--back-color, black);
+    z-index: 1003;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    color: var(--text-en-color, #45d7b3);
+    font-size: 1.5em;
+    font-family: "Sorts Mill Goudy", serif;
+}
+
+.viewer-close {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+    margin: 0;
+
+    width: 1em;
+    height: 1em;
+
+    font-size: 1.5em;
+    line-height: 1;
+
+    color: var(--text-en-color,);
+
     cursor: pointer;
+    z-index: 1002;
+    pointer-events: auto;
 }
 
-.viewer-back {
-    left: 20px;
-}
-
-.viewer-next {
-    right: 20px;
-}
-
-.viewer-back:hover,
-.viewer-next:hover {
-    text-decoration: underline;
+@media (max-width: 768px) {
+    .image-viewer-overlay {
+        display: none !important;
+    }
 }
 
 /* ======================================================
