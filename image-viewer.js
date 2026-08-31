@@ -73,6 +73,7 @@
             viewerImg.src = item.src;
             viewerImg.alt = item.alt || '';
             viewerImg.style.display = 'block';
+            viewerImg.classList.toggle('viewer-small', item.classList.contains('viewer-small'));
 
         } else if (item.tagName.toLowerCase() === 'video') {
 
