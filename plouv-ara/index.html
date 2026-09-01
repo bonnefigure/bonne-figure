@@ -85,19 +85,17 @@
             <img src="../images/plouv-ara/desktop/plouvara-desktop-3.webp" alt="Site specimen typgraphique desktop">
             <img src="../images/plouv-ara/desktop/plouvara-desktop-4.webp" alt="Site specimen typgraphique desktop">
             <img src="../images/plouv-ara/desktop/plouvara-desktop-5.webp" alt="Site specimen typgraphique desktop">
-            <video autoplay loop muted playsinline>
-                <source src="../videos/plouvara-desktop-video.mp4" type="video/mp4">
-            </video>
+            <video preload="none" loop muted playsinline>
+            <source data-src="../videos/plouvara-desktop-video.mp4" type="video/mp4">
+            </video>            
             
             <img src="../images/plouv-ara/plouvara-mobile-1.webp" alt="Site specimen typgraphique mobile" class="one-third">
             <img src="../images/plouv-ara/plouvara-mobile-2.webp" alt="Site specimen typgraphique mobile" class="one-third">
             <img src="../images/plouv-ara/plouvara-mobile-3.webp" alt="Site specimen typgraphique mobile" class="one-third">
             <img src="../images/plouv-ara/plouvara-mobile-4.webp" alt="Site specimen typgraphique mobile" class="one-third">
-            <video class="one-third" autoplay loop muted playsinline>
-                <source src="../videos/plouvara-mobile-video.mp4" type="video/mp4">
+            <video class="one-third" preload="none" loop muted playsinline>
+            <source data-src="../videos/plouvara-mobile-video.mp4" type="video/mp4">
             </video>
-
-
             <img src="../images/plouv-ara/livret-specimen-1.webp" alt="livret specimen Plouv Ara" class="two-thirds">
             <img src="../images/plouv-ara/livret-specimen-2.webp" alt="livret specimen Plouv Ara">
             <img src="../images/plouv-ara/livret-specimen-3.webp" alt="livret specimen Plouv Ara">
@@ -119,5 +117,51 @@
 <script src="../next-project.js"></script>
 <script src="../lazy-loader.js"></script>
 <script src="../image-viewer.js"></script>
+<script>
+(function () {
+    var videos = document.querySelectorAll('.column.right video[preload="none"]');
+    if (videos.length === 0) return;
+
+    var images = document.querySelectorAll('.column.right img');
+
+    function loadVideos() {
+        videos.forEach(function (video) {
+            var source = video.querySelector('source[data-src]');
+            if (source) {
+                source.src = source.getAttribute('data-src');
+                video.load();
+                video.play().catch(function () {});
+            }
+        });
+    }
+
+    var pending = images.length;
+
+    if (pending === 0) {
+        loadVideos();
+        return;
+    }
+
+    images.forEach(function (img) {
+        if (img.complete) {
+            pending--;
+        } else {
+            img.addEventListener('load', check);
+            img.addEventListener('error', check);
+        }
+    });
+
+    if (pending === 0) {
+        loadVideos();
+    }
+
+    function check() {
+        pending--;
+        if (pending <= 0) {
+            loadVideos();
+        }
+    }
+})();
+</script>
 </body>
 </html>

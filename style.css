@@ -515,8 +515,8 @@ a {
 }
 
 .image-viewer-overlay img.viewer-small {
-    width: 50vw;
-    max-width: 50vw;
+    width: 33vw;
+    max-width: 33vw;
     height: auto;
     max-height: 100%;
 }
