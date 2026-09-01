@@ -122,8 +122,6 @@
     var videos = document.querySelectorAll('.column.right video[preload="none"]');
     if (videos.length === 0) return;
 
-    var images = document.querySelectorAll('.column.right img');
-
     function loadVideos() {
         videos.forEach(function (video) {
             var source = video.querySelector('source[data-src]');
@@ -135,32 +133,7 @@
         });
     }
 
-    var pending = images.length;
-
-    if (pending === 0) {
-        loadVideos();
-        return;
-    }
-
-    images.forEach(function (img) {
-        if (img.complete) {
-            pending--;
-        } else {
-            img.addEventListener('load', check);
-            img.addEventListener('error', check);
-        }
-    });
-
-    if (pending === 0) {
-        loadVideos();
-    }
-
-    function check() {
-        pending--;
-        if (pending <= 0) {
-            loadVideos();
-        }
-    }
+    document.addEventListener('allImagesLoaded', loadVideos);
 })();
 </script>
 </body>

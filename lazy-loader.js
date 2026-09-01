@@ -1,7 +1,9 @@
-
 (function() {
     var images = Array.from(document.querySelectorAll('.column.right img'));
-    if (images.length === 0) return;
+    if (images.length === 0) {
+        document.dispatchEvent(new Event('allImagesLoaded'));
+        return;
+    }
 
     var sources = [];
     var alts = [];
@@ -16,7 +18,10 @@
 
 
     function loadNext(index) {
-        if (index >= images.length) return;
+        if (index >= images.length) {
+            document.dispatchEvent(new Event('allImagesLoaded'));
+            return;
+        }
 
         var img = images[index];
 
