@@ -44,6 +44,10 @@ body::-webkit-scrollbar {
     padding-bottom: 0px;
     padding-top: 50px;
 }
+body:not(.index) .column.left {
+    padding-right: 20px;
+}
+
 .left {
     background: white;
 }
