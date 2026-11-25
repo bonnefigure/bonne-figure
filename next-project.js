@@ -1,5 +1,6 @@
 (function () {
     var order = [
+        'grandeur-nature',
         'henri-ruaz-sur-les-cimes-et-dans-la-cite',
         'plouv-ara',
         'premiers-feux',
